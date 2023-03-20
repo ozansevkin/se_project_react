@@ -1,0 +1,36 @@
+.header {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 32px;
+}
+
+.header__logo {
+  margin: auto 0;
+}
+
+.header__info {
+  margin: auto 0 auto 24px;
+  text-align: center;
+}
+
+.header__link {
+  margin: auto 0 auto auto;
+  text-align: center;
+}
+
+.header__link:hover {
+  margin: auto 0 auto auto;
+  text-decoration: underline;
+}
+
+.header__user-name {
+  margin: auto 0 auto 20px;
+  text-align: center;
+}
+
+.header__avatar {
+  margin: auto 0 auto 12px;
+}
