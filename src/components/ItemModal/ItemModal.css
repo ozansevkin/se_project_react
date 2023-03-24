@@ -1,0 +1,66 @@
+.item-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.item-modal__card {
+  margin: 0;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 498px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.card__image {
+  width: 100%;
+  object-fit: contain;
+  justify-self: start;
+}
+.card__info {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin: 20px auto 32px 32px;
+  row-gap: 12px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.card__detail {
+  margin: 0;
+}
+
+.card__title {
+  margin: 0;
+}
+
+.card__close-button {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  border: none;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url("../../close-button-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+  cursor: pointer;
+}

@@ -7,14 +7,12 @@ const currentDate = new Date().toLocaleString("default", {
   day: "numeric",
 });
 
-const location = "New York";
-
-function Header() {
+function Header({ city }) {
   return (
     <header className="header">
       <img className="header__logo" src={logo} alt="logo" />
       <p className="header__info">
-        {currentDate}, {location}
+        {currentDate}, {city}
       </p>
       <a className="header__link">+ Add Clothes</a>
       <p className="header__user-name">Ozan Sevkin</p>
