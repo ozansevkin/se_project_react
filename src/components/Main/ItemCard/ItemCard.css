@@ -16,6 +16,7 @@
   object-fit: contain;
 }
 .item-card__title {
+  margin: 0;
   position: absolute;
   top: 15px;
   left: 125px;

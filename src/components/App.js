@@ -40,8 +40,8 @@ function App() {
         weatherData={weatherData}
         handleCardClick={handleCardClick}
       />
-      {/* <Footer />
-      <ModalWithForm /> */}
+      <Footer />
+      {/* <ModalWithForm /> */}
       {activeModal && (
         <ItemModal cardData={selectedCard} closeModals={closeModals} />
       )}
