@@ -10,10 +10,6 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
-.item-modal__card {
-  margin: 0;
-}
-
 .card {
   position: relative;
   display: flex;

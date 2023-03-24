@@ -10,7 +10,7 @@ function ItemModal({ cardData, closeModals }) {
         }
       }}
     >
-      <article className="item-modal__card card">
+      <article className="card">
         <img className="card__image" src={cardData.link} alt={cardData.name} />
         <div className="card__info">
           <p className="card__title">{cardData.name}</p>
