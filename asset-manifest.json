@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/se_project_react/static/css/main.dd243a13.css",
+    "main.js": "/se_project_react/static/js/main.4cef55d7.js",
+    "static/js/787.79f92504.chunk.js": "/se_project_react/static/js/787.79f92504.chunk.js",
+    "static/media/avatarWithImage.svg": "/se_project_react/static/media/avatarWithImage.e4c322676c30acbc98bf665359e6b948.svg",
+    "static/media/day__snow.svg": "/se_project_react/static/media/day__snow.f0df9ed2cec5a98e96479fd653844a85.svg",
+    "static/media/night__snow.svg": "/se_project_react/static/media/night__snow.3e93c9e92c0590270b9347a986061904.svg",
+    "static/media/day__storm.svg": "/se_project_react/static/media/day__storm.299d855c18a4dd89a3a15d523b67804a.svg",
+    "static/media/night__storm.svg": "/se_project_react/static/media/night__storm.4c1eb3b1b8165f9e8d70c2c490a0536a.svg",
+    "static/media/day__rain.svg": "/se_project_react/static/media/day__rain.6affa432694950085262caf061d08755.svg",
+    "static/media/night__rain.svg": "/se_project_react/static/media/night__rain.3388bdd47745820dae10b5958d43612e.svg",
+    "static/media/day__fog.svg": "/se_project_react/static/media/day__fog.e99f4b26d630b929bfa0df45cd7b4c27.svg",
+    "static/media/night__fog.svg": "/se_project_react/static/media/night__fog.b3c03e8d507590dcfda60cabae47d6fc.svg",
+    "static/media/randomizeButtonIcon.svg": "/se_project_react/static/media/randomizeButtonIcon.ec9f60f1c0c86306e0a2c6191cf2b8d4.svg",
+    "static/media/logo.svg": "/se_project_react/static/media/logo.995ce1105ca166eb5e5e12b4b52741db.svg",
+    "index.html": "/se_project_react/index.html",
+    "static/media/night__cloudy.svg": "/se_project_react/static/media/night__cloudy.511b42ed2bd67f060e31c35a3d2f071a.svg",
+    "static/media/day__cloudy.svg": "/se_project_react/static/media/day__cloudy.730beae5d39ba0003ff641bc37f29f69.svg",
+    "static/media/closeButtonIcon.svg": "/se_project_react/static/media/closeButtonIcon.27b76503988ebf4617d917e54b0ca745.svg",
+    "static/media/day__sunny.svg": "/se_project_react/static/media/day__sunny.150b083a01ff908edf15a2f408e0e113.svg",
+    "static/media/night__sunny.svg": "/se_project_react/static/media/night__sunny.8077ca1cc7a6c1a216f667d223b6b20c.svg",
+    "main.dd243a13.css.map": "/se_project_react/static/css/main.dd243a13.css.map",
+    "main.4cef55d7.js.map": "/se_project_react/static/js/main.4cef55d7.js.map",
+    "787.79f92504.chunk.js.map": "/se_project_react/static/js/787.79f92504.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dd243a13.css",
+    "static/js/main.4cef55d7.js"
+  ]
+}
