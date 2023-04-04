@@ -1,11 +1,11 @@
 import "./App.css";
-import Header from "./Header/Header";
-import Main from "./Main/Main";
-import Footer from "./Footer/Footer";
-import ModalWithForm from "./ModalWithForm/ModalWithForm";
-import ItemModal from "./ItemModal/ItemModal";
-import { defaultClothingItems } from "../utils/constants";
-import weatherApi from "../utils/weatherApi";
+import Header from "../Header/Header";
+import Main from "../Main/Main";
+import Footer from "../Footer/Footer";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import ItemModal from "../ItemModal/ItemModal";
+import { defaultClothingItems } from "../../utils/constants";
+import weatherApi from "../../utils/weatherApi";
 import { useEffect, useState } from "react";
 
 function App() {
