@@ -1,6 +1,6 @@
 import "./Main.css";
-import WeatherCard from "./WeatherCard/WeatherCard";
-import ItemCard from "./ItemCard/ItemCard";
+import WeatherCard from "../WeatherCard/WeatherCard";
+import ItemCard from "../ItemCard/ItemCard";
 import randomizeButtonIcon from "../../images/randomizeButtonIcon.svg";
 
 function Main({

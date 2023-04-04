@@ -1,5 +1,5 @@
 import "./WeatherCard.css";
-import * as weatherConditions from "../../../images/weatherConditions/index";
+import * as weatherConditions from "../../images/weatherConditions/index";
 
 function getCardBackgroundColor(time, condition) {
   if (time === "night") {
