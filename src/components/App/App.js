@@ -38,6 +38,12 @@ function App() {
     }
   }
 
+  function handleOverlayClose(e) {
+    if (e.target === e.currentTarget) {
+      return closeModals();
+    }
+  }
+
   useEffect(() => {
     weatherApi()
       .then((data) => setWeatherData(data))
@@ -76,7 +82,8 @@ function App() {
           title="New garment"
           named="add-clothes"
           buttonText="Add garment"
-          onClose={closeModals}
+          handleButtonClose={closeModals}
+          handleOverlayClose={handleOverlayClose}
         >
           <label className="form__text-input-label">
             Name
@@ -140,7 +147,11 @@ function App() {
         </ModalWithForm>
       )}
       {activeModal === "show-cloth" && (
-        <ItemModal cardData={selectedCard} onClose={closeModals} />
+        <ItemModal
+          cardData={selectedCard}
+          handleButtonClose={closeModals}
+          handleOverlayClose={handleOverlayClose}
+        />
       )}
     </div>
   );
