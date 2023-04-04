@@ -1,6 +1,5 @@
 import "./WeatherCard.css";
 import * as weatherConditions from "../../../images/weatherConditions/index";
-import { useEffect, useState } from "react";
 
 function getCardBackgroundColor(time, condition) {
   if (time === "night") {
@@ -13,11 +12,7 @@ function getCardBackgroundColor(time, condition) {
 }
 
 function WeatherCard({ weatherData: { time, condition, temp } }) {
-  const [cardBackgroundColor, setCardBackgroundColor] = useState("");
-
-  useEffect(() => {
-    setCardBackgroundColor(getCardBackgroundColor(time, condition));
-  }, [time, condition]);
+  const cardBackgroundColor = getCardBackgroundColor(time, condition);
 
   return (
     <article
