@@ -16,10 +16,12 @@
   object-fit: contain;
 }
 .item-card__title {
-  margin: 0;
+  width: max-content;
+  margin: 0 auto;
   position: absolute;
   top: 15px;
-  left: 125px;
+  left: 0;
+  right: 0;
   padding: 2px 12px;
   font-weight: 700;
   background-color: #fff;

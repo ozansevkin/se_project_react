@@ -1,10 +1,25 @@
 .header {
+  position: relative;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  column-gap: 50px;
   font-size: 20px;
   font-weight: 700;
   line-height: 1.2;
   margin-top: 32px;
+}
+
+.header__wrapper-left {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 34px;
+}
+
+.header__wrapper-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header__logo {
@@ -12,25 +27,111 @@
 }
 
 .header__info {
-  margin: auto 0 auto 24px;
+  margin: auto 0;
   text-align: center;
 }
 
-.header__link {
-  margin: auto 0 auto auto;
-  text-align: center;
+.header__menu-modal {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.header__link:hover {
+.header__menu-button {
+  display: none;
+}
+
+.menu-button {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 8px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background: #ffffff;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.menu-button_menu-opened {
+  display: flex;
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.menu-button__bar {
+  width: 28px;
+  height: 2px;
+  background: #000;
+  border-radius: 1px;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-button__bar_menu-opened:first-of-type {
+  transform: rotate(45deg) translate(3px, 4px);
+}
+
+.menu-button__bar_menu-opened:last-of-type {
+  transform: rotate(-45deg) translate(3px, -4px);
+}
+
+.header__text-button {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header__text-button:hover {
   margin: auto 0 auto auto;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .header__user-name {
-  margin: auto 0 auto 20px;
+  margin: 0 0 0 20px;
   text-align: center;
 }
 
 .header__avatar {
-  margin: auto 0 auto 12px;
+  margin: 0 0 0 12px;
+}
+
+@media screen and (max-width: 750px) {
+  .header__wrapper-right {
+    display: none;
+  }
+
+  .header__wrapper-right_menu-opened {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    row-gap: 24px;
+    padding: 0 50px;
+  }
+
+  .header__menu-button {
+    display: flex;
+  }
+
+  .header__menu-modal_menu-opened {
+    width: 100%;
+    min-height: 196px;
+    background: #ffffff;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    flex-wrap: wrap-reverse;
+  }
 }

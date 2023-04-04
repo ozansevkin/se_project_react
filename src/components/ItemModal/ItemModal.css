@@ -1,8 +1,9 @@
-.item-modal {
+.modal {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  padding: 0 var(--page-side-padding);
+  width: calc(100% - 2 * var(--page-side-padding));
   height: 100%;
   display: flex;
   align-items: center;
@@ -10,7 +11,7 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
-.card {
+.modal__container {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -21,6 +22,19 @@
   border-radius: 16px;
   box-sizing: border-box;
   overflow: hidden;
+}
+
+.modal__close-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  border: none;
+  padding: 4px;
+  background: none;
+  cursor: pointer;
 }
 
 .card__image {
@@ -45,18 +59,4 @@
 
 .card__title {
   margin: 0;
-}
-
-.card__close-button {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  border: none;
-  padding: 10px;
-  background-color: rgba(0, 0, 0, 0);
-  background-image: url("../../close-button-icon.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 16px;
-  cursor: pointer;
 }

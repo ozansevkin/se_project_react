@@ -1,0 +1,12 @@
+export { default as day__fog } from "./day__fog.svg";
+export { default as day__rain } from "./day__rain.svg";
+export { default as day__snow } from "./day__snow.svg";
+export { default as day__storm } from "./day__storm.svg";
+export { default as day__sunny } from "./day__sunny.svg";
+export { default as day__cloudy } from "./day__cloudy.svg";
+export { default as night__fog } from "./night__fog.svg";
+export { default as night__rain } from "./night__rain.svg";
+export { default as night__snow } from "./night__snow.svg";
+export { default as night__storm } from "./night__storm.svg";
+export { default as night__sunny } from "./night__sunny.svg";
+export { default as night__cloudy } from "./night__cloudy.svg";

@@ -40,7 +40,7 @@ const defaultClothingItems = [
 const weatherApiOptions = {
   lat: "-37.88668493371523",
   lon: "145.0398680797383",
-  units: "metric",
+  units: "imperial",
   key: "87ecaf5163a88f4161ef1ecb6b13bb75",
 };
 

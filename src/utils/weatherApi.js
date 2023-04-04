@@ -1,12 +1,40 @@
 import { weatherApiOptions as options } from "./constants";
 
 function getTempRange(temp) {
-  if (temp >= 30) {
+  if (temp >= 86) {
     return "hot";
-  } else if (temp > 19 && temp < 30) {
+  } else if (temp >= 66 && temp <= 85) {
     return "warm";
-  } else if (temp <= 19) {
+  } else if (temp <= 65) {
     return "cold";
+  }
+}
+
+function getWeatherCondition(conditionId) {
+  const firstDigit = Math.floor(conditionId / 100);
+
+  if (firstDigit === 2) {
+    return "storm";
+  } else if (firstDigit === 3 || firstDigit === 5) {
+    return "rain";
+  } else if (firstDigit === 6) {
+    return "snow";
+  } else if (firstDigit === 7) {
+    return "fog";
+  } else if (conditionId === 800) {
+    return "sunny";
+  } else if (firstDigit === 8) {
+    return "cloudy";
+  }
+}
+
+function getTimeOfTheDay(sunrise, sunset) {
+  const time = Math.floor(Date.now() / 1000);
+
+  if (time > sunrise && time < sunset) {
+    return "day";
+  } else {
+    return "night";
   }
 }
 
@@ -15,6 +43,8 @@ function processData(data) {
   processedData.temp = Math.round(data.main.temp);
   processedData.weather = getTempRange(processedData.temp);
   processedData.city = data.name;
+  processedData.condition = getWeatherCondition(data.weather[0].id);
+  processedData.time = getTimeOfTheDay(data.sys.sunrise, data.sys.sunset);
 
   return processedData;
 }
@@ -26,7 +56,9 @@ async function weatherApi() {
     .then((res) => {
       return res.ok
         ? res.json()
-        : Promise.reject(`Network response was not ok. Status: ${res.status}`);
+        : Promise.reject(
+            `Network response was not ok. Status: ${res.status} - ${res.statusText}`
+          );
     })
     .then((data) => processData(data));
 }
