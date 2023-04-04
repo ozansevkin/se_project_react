@@ -2,6 +2,7 @@
 
 :root {
   --page-side-padding: calc(10px + 1.5625vw);
+  height: 100%;
 }
 
 body {
