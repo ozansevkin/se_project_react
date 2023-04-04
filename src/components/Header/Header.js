@@ -8,6 +8,8 @@ const currentDate = new Date().toLocaleDateString("default", {
   day: "numeric",
 });
 
+const MOBILE_BREAKPOINT_WIDTH = 750; //Check Header.css media queries if needs to be changed
+
 function Header({
   city,
   setActiveModal,
@@ -16,7 +18,7 @@ function Header({
 }) {
   useEffect(() => {
     const handleResizeWindow = () => {
-      if (window.innerWidth >= 750 && isMobileMenuOpened) {
+      if (window.innerWidth >= MOBILE_BREAKPOINT_WIDTH && isMobileMenuOpened) {
         toggleMobileMenu();
       }
     };
