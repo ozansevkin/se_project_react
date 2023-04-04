@@ -49,18 +49,21 @@ function processData(data) {
   return processedData;
 }
 
+function processServerResponse(res) {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(
+    `Network response was not ok. Status: ${res.status} - ${res.statusText}`
+  );
+}
+
 async function weatherApi() {
   return await fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${options.lat}&lon=${options.lon}&units=${options.units}&appid=${options.key}`
   )
-    .then((res) => {
-      return res.ok
-        ? res.json()
-        : Promise.reject(
-            `Network response was not ok. Status: ${res.status} - ${res.statusText}`
-          );
-    })
-    .then((data) => processData(data));
+    .then(processServerResponse)
+    .then(processData);
 }
 
 export default weatherApi;
