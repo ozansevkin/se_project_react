@@ -1,22 +1,7 @@
 import "./ModalWithForm.css";
-import { useEffect } from "react";
 import closeButtonIcon from "../../images/closeButtonIcon.svg";
 
 function ModalWithForm({ title, name: named, buttonText, onClose, children }) {
-  const handleEscClose = (e) => {
-    if (e.key === "Escape") {
-      return onClose();
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("keydown", handleEscClose);
-
-    return () => {
-      document.removeEventListener("keydown", handleEscClose);
-    };
-  });
-
   return (
     <div
       className={`modal modal_type_${named}`}

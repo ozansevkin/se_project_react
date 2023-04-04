@@ -1,22 +1,7 @@
-import { useEffect } from "react";
 import "./ItemModal.css";
 import closeButtonIcon from "../../images/closeButtonIcon.svg";
 
 function ItemModal({ cardData: { name, link, weather }, onClose }) {
-  const handleEscClose = (e) => {
-    if (e.key === "Escape") {
-      return onClose();
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("keydown", handleEscClose);
-
-    return () => {
-      document.removeEventListener("keydown", handleEscClose);
-    };
-  });
-
   return (
     <div
       className="modal"

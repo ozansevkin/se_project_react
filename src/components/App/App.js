@@ -32,6 +32,12 @@ function App() {
     setActiveModal("");
   }
 
+  function handleEscClose(e) {
+    if (e.key === "Escape") {
+      return closeModals();
+    }
+  }
+
   useEffect(() => {
     weatherApi()
       .then((data) => setWeatherData(data))
@@ -41,6 +47,14 @@ function App() {
   useEffect(() => {
     setClothingItems(defaultClothingItems);
   }, []);
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  });
 
   return (
     <div className="app">
