@@ -57,7 +57,7 @@
   cursor: pointer;
 }
 
-.menu-button_menu-opened {
+.menu-button--menu-opened {
   display: flex;
   background: none;
   border: none;
@@ -76,11 +76,11 @@
   transition: all 0.3s ease-in-out;
 }
 
-.menu-button__bar_menu-opened:first-of-type {
+.menu-button__bar--menu-opened:first-of-type {
   transform: rotate(45deg) translate(3px, 4px);
 }
 
-.menu-button__bar_menu-opened:last-of-type {
+.menu-button__bar--menu-opened:last-of-type {
   transform: rotate(-45deg) translate(3px, -4px);
 }
 
@@ -115,7 +115,7 @@
     display: none;
   }
 
-  .header__wrapper-right_menu-opened {
+  .header__wrapper-right--menu-opened {
     display: flex;
     flex-wrap: wrap-reverse;
     row-gap: 24px;
@@ -130,7 +130,7 @@
     align-self: flex-start;
   }
 
-  .header__menu-modal_menu-opened {
+  .header__menu-modal--menu-opened {
     width: 100%;
     min-height: 196px;
     background: #ffffff;

@@ -41,14 +41,14 @@ function Header({
       <div
         className={
           isMobileMenuOpened
-            ? "header__menu-modal header__menu-modal_menu-opened"
+            ? "header__menu-modal header__menu-modal--menu-opened"
             : "header__menu-modal"
         }
       >
         <div
           className={
             isMobileMenuOpened
-              ? "header__wrapper-right header__wrapper-right_menu-opened"
+              ? "header__wrapper-right header__wrapper-right--menu-opened"
               : "header__wrapper-right"
           }
         >
@@ -64,7 +64,7 @@ function Header({
         <button
           className={
             isMobileMenuOpened
-              ? "header__menu-button menu-button menu-button_menu-opened"
+              ? "header__menu-button menu-button menu-button--menu-opened"
               : "header__menu-button menu-button"
           }
           type="button"
@@ -73,14 +73,14 @@ function Header({
           <span
             className={
               isMobileMenuOpened
-                ? "menu-button__bar menu-button__bar_menu-opened"
+                ? "menu-button__bar menu-button__bar--menu-opened"
                 : "menu-button__bar"
             }
           ></span>
           <span
             className={
               isMobileMenuOpened
-                ? "menu-button__bar menu-button__bar_menu-opened"
+                ? "menu-button__bar menu-button__bar--menu-opened"
                 : "menu-button__bar"
             }
           ></span>
