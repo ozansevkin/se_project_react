@@ -17,6 +17,7 @@ The idea of the application is pretty simple - It makes a call to an API, which 
 - [HTML3](https://developer.mozilla.org/en-US/docs/Web/HTML)
   - Semantic HTML
 - [CSS5](https://developer.mozilla.org/en-US/docs/Web/CSS)
+  - PostCSS Normalize
   - Flexbox, grid
   - Positioning
   - CSS variables
