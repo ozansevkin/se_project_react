@@ -126,6 +126,10 @@
     display: flex;
   }
 
+  .header__menu-modal {
+    align-self: flex-start;
+  }
+
   .header__menu-modal_menu-opened {
     width: 100%;
     min-height: 196px;
