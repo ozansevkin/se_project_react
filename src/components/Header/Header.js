@@ -2,13 +2,12 @@ import "./Header.css";
 import logo from "../../images/logo.svg";
 import avatar from "../../images/avatarWithImage.svg";
 import { useEffect } from "react";
+import { headerMobileBreakpointWidth as mobileBreakPointWidth } from "../../utils/constants";
 
 const currentDate = new Date().toLocaleDateString("default", {
   month: "long",
   day: "numeric",
 });
-
-const MOBILE_BREAKPOINT_WIDTH = 750; //Check Header.css media queries if needs to be changed
 
 function Header({
   city,
@@ -18,7 +17,7 @@ function Header({
 }) {
   useEffect(() => {
     const handleResizeWindow = () => {
-      if (window.innerWidth >= MOBILE_BREAKPOINT_WIDTH && isMobileMenuOpened) {
+      if (window.innerWidth >= mobileBreakPointWidth && isMobileMenuOpened) {
         toggleMobileMenu();
       }
     };

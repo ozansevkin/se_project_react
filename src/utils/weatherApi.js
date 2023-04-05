@@ -3,7 +3,7 @@ import { weatherApiOptions as options } from "./constants";
 function getTempRange(temp) {
   if (temp >= 86) {
     return "hot";
-  } else if (temp >= 66 && temp <= 85) {
+  } else if (temp > 65 && temp < 86) {
     return "warm";
   } else if (temp <= 65) {
     return "cold";

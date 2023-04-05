@@ -44,4 +44,6 @@ const weatherApiOptions = {
   key: "87ecaf5163a88f4161ef1ecb6b13bb75",
 };
 
-export { defaultClothingItems, weatherApiOptions };
+const headerMobileBreakpointWidth = 750; //Check Header.css media queries if needs to be changed
+
+export { defaultClothingItems, weatherApiOptions, headerMobileBreakpointWidth };
