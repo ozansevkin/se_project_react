@@ -1,4 +1,5 @@
 import "./Header.css";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import logo from "../../images/logo.svg";
 import avatar from "../../images/avatarWithImage.svg";
 import { useEffect } from "react";
@@ -52,6 +53,7 @@ function Header({
               : "header__wrapper-right"
           }
         >
+          <ToggleSwitch />
           <button
             className="header__text-button"
             onClick={() => setActiveModal("add-clothes")}
