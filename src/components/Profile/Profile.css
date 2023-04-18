@@ -1,0 +1,6 @@
+.profile {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 50px;
+  margin-top: 47px;
+}

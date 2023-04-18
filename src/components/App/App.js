@@ -86,7 +86,12 @@ function App() {
         />
         <Switch>
           <Route exact path="/profile">
-            <Profile />
+            <Profile
+              clothingItems={clothingItems}
+              weather={weatherData.weather}
+              handleCardClick={handleCardClick}
+              setActiveModal={setActiveModal}
+            />
           </Route>
           <Route path="/">
             <Main

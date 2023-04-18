@@ -1,0 +1,27 @@
+.clothes-section {
+  max-width: 1015px;
+  flex-grow: 1;
+  margin: 15.5px 0 0 0;
+}
+
+.clothes-section__heading {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+}
+
+.clothes-section__text-button {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 20px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.clothes-section__text-button:hover {
+  color: #000;
+}
+
+.clothes-section__list {
+  margin-top: 16px;
+}
