@@ -1,6 +1,9 @@
 import { weatherApiOptions as options } from "./constants";
 
+// temp in Fahrenheit
 function getTempRange(temp) {
+  temp = Math.round(temp);
+
   if (temp >= 86) {
     return "hot";
   } else if (temp > 65 && temp < 86) {
@@ -8,6 +11,17 @@ function getTempRange(temp) {
   } else if (temp <= 65) {
     return "cold";
   }
+}
+
+// temp in Fahrenheit, temUnit only F and C
+function getTempWithUnit(temp, tempUnit) {
+  if (tempUnit === "C") {
+    temp = ((temp - 32) * 5) / 9;
+  } else if (tempUnit !== "F") {
+    throw new Error(`This function only works with F and C`);
+  }
+
+  return `${Math.round(temp)}&deg;${tempUnit}`;
 }
 
 function getWeatherCondition(conditionId) {
@@ -40,8 +54,9 @@ function getTimeOfTheDay(sunrise, sunset) {
 
 function processData(data) {
   const processedData = {};
-  processedData.temp = Math.round(data.main.temp);
-  processedData.weather = getTempRange(processedData.temp);
+  processedData.temp.F = getTempWithUnit(data.main.temp, "F");
+  processedData.temp.C = getTempWithUnit(data.main.temp, "C");
+  processedData.weather = getTempRange(data.main.temp);
   processedData.city = data.name;
   processedData.condition = getWeatherCondition(data.weather[0].id);
   processedData.time = getTimeOfTheDay(data.sys.sunrise, data.sys.sunset);
