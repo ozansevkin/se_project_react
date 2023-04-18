@@ -4,10 +4,12 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import ItemModal from "../ItemModal/ItemModal";
+import Profile from "../Profile/Profile";
 import { defaultClothingItems } from "../../utils/constants";
 import weatherApi from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { useEffect, useState } from "react";
+import { Switch, Route } from "react-router-dom";
 
 function App() {
   const [weatherData, setWeatherData] = useState({ temp: {} });
@@ -82,12 +84,19 @@ function App() {
           isMobileMenuOpened={isMobileMenuOpened}
           toggleMobileMenu={toggleMobileMenu}
         />
-        <Main
-          clothingItems={clothingItems}
-          weatherData={weatherData}
-          handleCardClick={handleCardClick}
-          isMobileMenuOpened={isMobileMenuOpened}
-        />
+        <Switch>
+          <Route exact path="/profile">
+            <Profile />
+          </Route>
+          <Route path="/">
+            <Main
+              clothingItems={clothingItems}
+              weatherData={weatherData}
+              handleCardClick={handleCardClick}
+              isMobileMenuOpened={isMobileMenuOpened}
+            />
+          </Route>
+        </Switch>
         <Footer />
         {activeModal === "add-clothes" && (
           <ModalWithForm

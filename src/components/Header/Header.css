@@ -22,6 +22,14 @@
   justify-content: center;
 }
 
+.header__profile {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 .header__logo {
   margin: auto 0;
 }

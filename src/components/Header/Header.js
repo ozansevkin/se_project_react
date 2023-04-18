@@ -3,6 +3,7 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import logo from "../../images/logo.svg";
 import avatar from "../../images/avatarWithImage.svg";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { headerMobileBreakpointWidth as mobileBreakPointWidth } from "../../utils/constants";
 
 const currentDate = new Date().toLocaleDateString("default", {
@@ -32,7 +33,9 @@ function Header({
     <header className="header">
       {!isMobileMenuOpened && (
         <div className="header__wrapper-left">
-          <img className="header__logo" src={logo} alt="logo" />
+          <Link to="/">
+            <img className="header__logo" src={logo} alt="logo" />
+          </Link>
           <p className="header__info">
             {currentDate}, {city}
           </p>
@@ -60,8 +63,10 @@ function Header({
           >
             + Add Clothes
           </button>
-          <p className="header__user-name">Ozan Sevkin</p>
-          <img className="header__avatar" src={avatar} alt="User Avatar" />
+          <Link to="/profile" className="header__profile">
+            <p className="header__user-name">Ozan Sevkin</p>
+            <img className="header__avatar" src={avatar} alt="User Avatar" />
+          </Link>
         </div>
         <button
           className={
