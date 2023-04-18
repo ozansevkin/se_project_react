@@ -14,14 +14,11 @@ function getTempRange(temp) {
 }
 
 // temp in Fahrenheit, temUnit only F and C
-function getTempWithUnit(temp, tempUnit) {
+function getTempWithUnit(temp, tempUnit = "F") {
   if (tempUnit === "C") {
     temp = ((temp - 32) * 5) / 9;
-  } else if (tempUnit !== "F") {
-    throw new Error(`This function only works with F and C`);
   }
-
-  return `${Math.round(temp)}&deg;${tempUnit}`;
+  return `${Math.round(temp)}°${tempUnit}`;
 }
 
 function getWeatherCondition(conditionId) {
@@ -53,8 +50,8 @@ function getTimeOfTheDay(sunrise, sunset) {
 }
 
 function processData(data) {
-  const processedData = {};
-  processedData.temp.F = getTempWithUnit(data.main.temp, "F");
+  const processedData = { temp: {} };
+  processedData.temp.F = getTempWithUnit(data.main.temp);
   processedData.temp.C = getTempWithUnit(data.main.temp, "C");
   processedData.weather = getTempRange(data.main.temp);
   processedData.city = data.name;

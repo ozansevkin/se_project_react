@@ -10,7 +10,7 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 import { useEffect, useState } from "react";
 
 function App() {
-  const [weatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState({ temp: {} });
 
   const [clothingItems, setClothingItems] = useState([]);
 
@@ -20,7 +20,13 @@ function App() {
 
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
 
-  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("C");
+
+  function handleToggleSwitchChange() {
+    currentTemperatureUnit === "F"
+      ? setCurrentTemperatureUnit("C")
+      : setCurrentTemperatureUnit("F");
+  }
 
   function toggleMobileMenu() {
     setIsMobileMenuOpened(!isMobileMenuOpened);
