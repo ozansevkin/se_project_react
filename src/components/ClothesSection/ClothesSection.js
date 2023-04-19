@@ -20,7 +20,7 @@ function ClothesSection({
       <h2 className="clothes-section__heading">Your Items</h2>
       <button
         className="header__text-button clothes-section__text-button"
-        onClick={() => setActiveModal("add-clothes")}
+        onClick={() => setActiveModal("add-cloth")}
       >
         + Add New
       </button>

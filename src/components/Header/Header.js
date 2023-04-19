@@ -59,7 +59,7 @@ function Header({
           <ToggleSwitch />
           <button
             className="header__text-button"
-            onClick={() => setActiveModal("add-clothes")}
+            onClick={() => setActiveModal("add-cloth")}
           >
             + Add Clothes
           </button>

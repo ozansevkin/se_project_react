@@ -3,16 +3,23 @@ import closeButtonIcon from "../../images/closeButtonIcon.svg";
 
 function ModalWithForm({
   title,
-  name: named,
+  named,
   buttonText,
   handleButtonClose,
   handleOverlayClose,
+  handleSubmit,
   children,
 }) {
   return (
     <div className={`modal modal_type_${named}`} onClick={handleOverlayClose}>
       <div className="modal__container">
-        <form action="#" method="#" name={named} className="form modal__form">
+        <form
+          action="#"
+          method="#"
+          name={named}
+          className="form modal__form"
+          onSubmit={handleSubmit}
+        >
           <h2 className="form__title">{title}</h2>
 
           {children}
