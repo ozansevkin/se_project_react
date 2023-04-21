@@ -3,7 +3,7 @@ import closeButtonIcon from "../../images/closeButtonIcon.svg";
 
 function ItemModal({
   cardData,
-  cardData: { name, link, weather },
+  cardData: { name, imageUrl, weather },
   handleButtonClose,
   handleOverlayClose,
   openConfirmationModal,
@@ -11,7 +11,7 @@ function ItemModal({
   return (
     <div className="modal" onClick={handleOverlayClose}>
       <article className="card modal__container">
-        <img className="card__image" src={link} alt={name} />
+        <img className="card__image" src={imageUrl} alt={name} />
         <div className="card__info">
           <p className="card__title">{name}</p>
           <p className="card__detail">Weather: {weather}</p>

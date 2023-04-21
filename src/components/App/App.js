@@ -6,7 +6,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
-import { defaultClothingItems } from "../../utils/constants";
+import { apiGetItems, apiAddItem, apiDeleteItem } from "../../utils/api";
 import weatherApi from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { useEffect, useState } from "react";
@@ -42,6 +42,7 @@ function App() {
 
   function closeModals() {
     setActiveModal("");
+    setSelectedCard({});
   }
 
   function handleEscClose(e) {
@@ -57,7 +58,9 @@ function App() {
   }
 
   function handleAddItemSubmit(item) {
-    setClothingItems([item, ...clothingItems]);
+    apiAddItem(item)
+      .then(setClothingItems([item, ...clothingItems]))
+      .catch((err) => console.error(`API Error: ${err}`));
   }
 
   function openConfirmationModal(card) {
@@ -66,21 +69,25 @@ function App() {
   }
 
   function handleCardDelete() {
-    setClothingItems(
-      [...clothingItems].filter((item) => item._id !== selectedCard._id)
-    );
+    apiDeleteItem(selectedCard.id)
+      .then(
+        setClothingItems(
+          [...clothingItems].filter((item) => item.id !== selectedCard.id)
+        )
+      )
+      .catch((err) => console.error(`API Error: ${err}`));
 
     closeModals();
   }
 
   useEffect(() => {
     weatherApi()
-      .then((data) => setWeatherData(data))
+      .then(setWeatherData)
       .catch((err) => console.error(`Weather API Error: ${err}`));
-  }, []);
 
-  useEffect(() => {
-    setClothingItems(defaultClothingItems);
+    apiGetItems()
+      .then(setClothingItems)
+      .catch((err) => console.error(`API Error: ${err}`));
   }, []);
 
   useEffect(() => {

@@ -23,10 +23,10 @@ function AddItemModal({ onAddItem, handleButtonClose, handleOverlayClose }) {
     e.preventDefault();
 
     onAddItem({
-      _id: Math.floor(Math.random() * (100 - 6) + 6),
+      id: Math.floor(Math.random() * (100 - 17) + 17),
       name,
       weather,
-      link: imageUrl,
+      imageUrl,
     });
 
     handleButtonClose();
