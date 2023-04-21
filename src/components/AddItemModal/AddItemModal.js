@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function AddItemModal({ onAddItem, handleButtonClose, handleOverlayClose }) {
   const [name, setName] = useState("");
-  const [image, setImage] = useState("");
+  const [imageUrl, setImage] = useState("");
   const [weather, setWeather] = useState("");
 
   function handleNameChange(e) {
@@ -26,7 +26,7 @@ function AddItemModal({ onAddItem, handleButtonClose, handleOverlayClose }) {
       _id: Math.floor(Math.random() * (100 - 6) + 6),
       name,
       weather,
-      link: image,
+      link: imageUrl,
     });
 
     handleButtonClose();
@@ -57,11 +57,11 @@ function AddItemModal({ onAddItem, handleButtonClose, handleOverlayClose }) {
         Image
         <input
           type="url"
-          name="image"
+          name="imageUrl"
           placeholder="Image URL"
           className="form__text-input"
           required
-          value={image}
+          value={imageUrl}
           onChange={handleImageChange}
         />
       </label>

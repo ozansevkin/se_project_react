@@ -2,9 +2,11 @@ import "./ItemModal.css";
 import closeButtonIcon from "../../images/closeButtonIcon.svg";
 
 function ItemModal({
+  cardData,
   cardData: { name, link, weather },
   handleButtonClose,
   handleOverlayClose,
+  openConfirmationModal,
 }) {
   return (
     <div className="modal" onClick={handleOverlayClose}>
@@ -13,6 +15,12 @@ function ItemModal({
         <div className="card__info">
           <p className="card__title">{name}</p>
           <p className="card__detail">Weather: {weather}</p>
+          <button
+            className="card__delete-button"
+            onClick={() => openConfirmationModal(cardData)}
+          >
+            Delete item
+          </button>
         </div>
         <button
           className="modal__close-button"

@@ -1,0 +1,42 @@
+.confirmation {
+  padding: 60px var(--page-side-padding);
+  width: min(670px, 100%);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.confirmation__heading {
+  margin: 0;
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+.confirmation__warning {
+  margin: 0;
+  font-size: inherit;
+}
+
+.confirmation__text-button {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.confirmation__text-button:hover {
+  text-decoration: underline;
+}
+
+.confirmation__text-button--type_confirm {
+  color: #ff4d00;
+  margin: 40px 0 0 0;
+}
+
+.confirmation__text-button--type_cancel {
+  margin: 24px 0 0 0;
+}

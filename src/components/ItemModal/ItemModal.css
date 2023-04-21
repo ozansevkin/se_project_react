@@ -45,20 +45,43 @@
   justify-self: start;
 }
 .card__info {
-  align-self: flex-start;
-  display: flex;
+  /* align-self: flex-start; */
+  width: calc(100% - 32px * 2);
+  display: grid;
+  grid-template-areas: "title delete" "detail .";
   flex-direction: column;
-  margin: 20px auto 32px 32px;
   row-gap: 12px;
+  margin: 20px 32px 32px 32px;
   font-weight: 700;
   font-size: 20px;
   line-height: 1.2;
 }
 
 .card__detail {
+  grid-area: detail;
   margin: 0;
 }
 
 .card__title {
+  grid-area: title;
   margin: 0;
+}
+
+.card__delete-button {
+  grid-area: delete;
+  justify-self: flex-end;
+  width: max-content;
+  color: #ff4d00;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.card__delete-button:hover {
+  text-decoration: underline;
 }

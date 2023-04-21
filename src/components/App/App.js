@@ -5,6 +5,7 @@ import Footer from "../Footer/Footer";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
+import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import { defaultClothingItems } from "../../utils/constants";
 import weatherApi from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
@@ -57,6 +58,19 @@ function App() {
 
   function handleAddItemSubmit(item) {
     setClothingItems([item, ...clothingItems]);
+  }
+
+  function openConfirmationModal(card) {
+    setActiveModal("delete-cloth");
+    setSelectedCard(card);
+  }
+
+  function handleCardDelete() {
+    setClothingItems(
+      [...clothingItems].filter((item) => item._id !== selectedCard._id)
+    );
+
+    closeModals();
   }
 
   useEffect(() => {
@@ -119,6 +133,14 @@ function App() {
             cardData={selectedCard}
             handleButtonClose={closeModals}
             handleOverlayClose={handleOverlayClose}
+            openConfirmationModal={openConfirmationModal}
+          />
+        )}
+        {activeModal === "delete-cloth" && (
+          <DeleteConfirmationModal
+            handleButtonClose={closeModals}
+            handleOverlayClose={handleOverlayClose}
+            handleCardDelete={handleCardDelete}
           />
         )}
       </CurrentTemperatureUnitContext.Provider>
