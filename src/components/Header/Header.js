@@ -29,6 +29,9 @@ function Header({
     };
   });
 
+  function setClassForMobileMenu(className) {
+    return `${className} ${isMobileMenuOpened && `${className}--menu-opened`}`;
+  }
   return (
     <header className="header">
       {!isMobileMenuOpened && (
@@ -42,20 +45,8 @@ function Header({
         </div>
       )}
 
-      <div
-        className={
-          isMobileMenuOpened
-            ? "header__menu-modal header__menu-modal--menu-opened"
-            : "header__menu-modal"
-        }
-      >
-        <div
-          className={
-            isMobileMenuOpened
-              ? "header__wrapper-right header__wrapper-right--menu-opened"
-              : "header__wrapper-right"
-          }
-        >
+      <div className={setClassForMobileMenu("header__menu-modal")}>
+        <div className={setClassForMobileMenu("header__wrapper-right")}>
           <ToggleSwitch />
           <button
             className="header__text-button"
@@ -69,28 +60,12 @@ function Header({
           </Link>
         </div>
         <button
-          className={
-            isMobileMenuOpened
-              ? "header__menu-button menu-button menu-button--menu-opened"
-              : "header__menu-button menu-button"
-          }
+          className={setClassForMobileMenu("header__menu-button menu-button")}
           type="button"
           onClick={toggleMobileMenu}
         >
-          <span
-            className={
-              isMobileMenuOpened
-                ? "menu-button__bar menu-button__bar--menu-opened"
-                : "menu-button__bar"
-            }
-          ></span>
-          <span
-            className={
-              isMobileMenuOpened
-                ? "menu-button__bar menu-button__bar--menu-opened"
-                : "menu-button__bar"
-            }
-          ></span>
+          <span className={setClassForMobileMenu("menu-button__bar")}></span>
+          <span className={setClassForMobileMenu("menu-button__bar")}></span>
         </button>
       </div>
     </header>
