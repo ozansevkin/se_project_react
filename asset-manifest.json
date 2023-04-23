@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/se_project_react/static/css/main.1d4a8738.css",
-    "main.js": "/se_project_react/static/js/main.1cc0f90b.js",
+    "main.css": "/se_project_react/static/css/main.5067d6a7.css",
+    "main.js": "/se_project_react/static/js/main.91d2d753.js",
     "static/js/787.79f92504.chunk.js": "/se_project_react/static/js/787.79f92504.chunk.js",
     "static/media/avatarWithImage.svg": "/se_project_react/static/media/avatarWithImage.e4c322676c30acbc98bf665359e6b948.svg",
     "static/media/day__snow.svg": "/se_project_react/static/media/day__snow.f0df9ed2cec5a98e96479fd653844a85.svg",
@@ -20,12 +20,12 @@
     "static/media/closeButtonIcon.svg": "/se_project_react/static/media/closeButtonIcon.27b76503988ebf4617d917e54b0ca745.svg",
     "static/media/day__sunny.svg": "/se_project_react/static/media/day__sunny.150b083a01ff908edf15a2f408e0e113.svg",
     "static/media/night__sunny.svg": "/se_project_react/static/media/night__sunny.8077ca1cc7a6c1a216f667d223b6b20c.svg",
-    "main.1d4a8738.css.map": "/se_project_react/static/css/main.1d4a8738.css.map",
-    "main.1cc0f90b.js.map": "/se_project_react/static/js/main.1cc0f90b.js.map",
+    "main.5067d6a7.css.map": "/se_project_react/static/css/main.5067d6a7.css.map",
+    "main.91d2d753.js.map": "/se_project_react/static/js/main.91d2d753.js.map",
     "787.79f92504.chunk.js.map": "/se_project_react/static/js/787.79f92504.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1d4a8738.css",
-    "static/js/main.1cc0f90b.js"
+    "static/css/main.5067d6a7.css",
+    "static/js/main.91d2d753.js"
   ]
 }
