@@ -8,6 +8,7 @@ function ModalWithForm({
   handleButtonClose,
   handleOverlayClose,
   handleSubmit,
+  formValidity,
   children,
 }) {
   return (
@@ -19,12 +20,17 @@ function ModalWithForm({
           name={named}
           className="form modal__form"
           onSubmit={handleSubmit}
+          noValidate
         >
           <h2 className="form__title">{title}</h2>
 
           {children}
 
-          <button type="submit" className="form__submit-button">
+          <button
+            type="submit"
+            className="form__submit-button"
+            disabled={!formValidity}
+          >
             {buttonText}
           </button>
         </form>

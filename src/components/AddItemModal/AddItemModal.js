@@ -1,22 +1,40 @@
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 function AddItemModal({ onAddItem, handleButtonClose, handleOverlayClose }) {
   const [name, setName] = useState("");
   const [imageUrl, setImage] = useState("");
   const [weather, setWeather] = useState("");
+  const [nameValidity, setNameValidity] = useState(false);
+  const [imageUrlValidity, setImageUrlValidity] = useState(false);
+  const [weatherValidity, setWeatherValidity] = useState(false);
+  const [formValidity, setformValidity] = useState(false);
+  const nameValidationMessage = useRef("");
+  const imageUrlValidationMessage = useRef("");
 
   function handleNameChange(e) {
     setName(e.target.value);
+    setNameValidity(e.target.validity.valid);
+    setformValidity(
+      e.target.validity.valid && imageUrlValidity && weatherValidity
+    );
+    nameValidationMessage.current = e.target.validationMessage;
   }
 
-  function handleImageChange(e) {
+  function handleImageUrlChange(e) {
     setImage(e.target.value);
+    setImageUrlValidity(e.target.validity.valid);
+    setformValidity(e.target.validity.valid && nameValidity && weatherValidity);
+    imageUrlValidationMessage.current = e.target.validationMessage;
   }
 
   function handleWeatherChange(e) {
     setWeather(e.target.value);
+    setWeatherValidity(e.target.validity.valid);
+    setformValidity(
+      e.target.validity.valid && nameValidity && imageUrlValidity
+    );
   }
 
   function handleSubmit(e) {
@@ -40,29 +58,45 @@ function AddItemModal({ onAddItem, handleButtonClose, handleOverlayClose }) {
       handleButtonClose={handleButtonClose}
       handleOverlayClose={handleOverlayClose}
       handleSubmit={handleSubmit}
+      formValidity={formValidity}
     >
-      <label className="form__text-input-label">
+      <label
+        className={`form__text-input-label ${
+          nameValidationMessage.current && "form__text-input-label--error"
+        }`}
+      >
         Name
+        {nameValidationMessage.current && ` (${nameValidationMessage.current})`}
         <input
           type="text"
           name="name"
           placeholder="Name"
-          className="form__text-input"
+          className={`form__text-input ${
+            nameValidationMessage.current && "form__text-input--error"
+          }`}
           required
           value={name}
           onChange={handleNameChange}
         />
       </label>
-      <label className="form__text-input-label">
+      <label
+        className={`form__text-input-label ${
+          imageUrlValidationMessage.current && "form__text-input-label--error"
+        }`}
+      >
         Image
+        {imageUrlValidationMessage.current &&
+          ` (${imageUrlValidationMessage.current})`}
         <input
           type="url"
           name="imageUrl"
           placeholder="Image URL"
-          className="form__text-input"
+          className={`form__text-input ${
+            imageUrlValidationMessage.current && "form__text-input--error"
+          }`}
           required
           value={imageUrl}
-          onChange={handleImageChange}
+          onChange={handleImageUrlChange}
         />
       </label>
 
