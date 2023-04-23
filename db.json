@@ -101,6 +101,12 @@
       "name": "T-Shirt",
       "weather": "hot",
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
+    },
+    {
+      "id": 37,
+      "name": "zxcc",
+      "weather": "hot",
+      "imageUrl": "https://www.bing.com/th?id=OIP.bpJTixcJ9eRwEFjKsApJ8QHaEo&w=153&h=100&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
     }
   ]
 }
