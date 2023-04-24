@@ -1,7 +1,6 @@
 import "./Main.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
-import randomizeButtonIcon from "../../images/randomizeButtonIcon.svg";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { useContext } from "react";
 
@@ -29,10 +28,6 @@ function Main({
         Today is {temp[currentTemperatureUnit]} / You may want to wear:
       </p>
       <ul className="main__list">{listItems}</ul>
-      <button className="main__button">
-        <img src={randomizeButtonIcon} alt="Randomize" />
-        &nbsp; Randomize
-      </button>
     </main>
   );
 }
