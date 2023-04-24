@@ -3,7 +3,12 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 // import { useState, useRef } from "react";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 
-function AddItemModal({ onAddItem, handleButtonClose, handleOverlayClose }) {
+function AddItemModal({
+  onAddItem,
+  handleButtonClose,
+  handleOverlayClose,
+  isLoading,
+}) {
   const { values, handleChange, errors, isValid } = useFormAndValidation();
 
   function handleSubmit(e) {
@@ -23,7 +28,7 @@ function AddItemModal({ onAddItem, handleButtonClose, handleOverlayClose }) {
     <ModalWithForm
       title="New garment"
       named="add-cloth"
-      buttonText="Add garment"
+      buttonText={isLoading ? "Saving..." : "Add garment"}
       handleButtonClose={handleButtonClose}
       handleOverlayClose={handleOverlayClose}
       handleSubmit={handleSubmit}

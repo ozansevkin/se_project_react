@@ -5,6 +5,7 @@ function DeleteConfirmationModal({
   handleButtonClose,
   handleOverlayClose,
   handleCardDelete,
+  isLoading,
 }) {
   return (
     <div className="modal" onClick={handleOverlayClose}>
@@ -17,7 +18,7 @@ function DeleteConfirmationModal({
           className="confirmation__text-button confirmation__text-button--type_confirm"
           onClick={handleCardDelete}
         >
-          Yes, delete item
+          {isLoading ? "Deleting..." : "Yes, delete item"}
         </button>
         <button
           className="confirmation__text-button confirmation__text-button--type_cancel"

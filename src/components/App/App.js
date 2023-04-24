@@ -25,6 +25,8 @@ function App() {
 
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("C");
 
+  const [isLoading, setIsLoading] = useState(false);
+
   function handleToggleSwitchChange() {
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
@@ -58,9 +60,11 @@ function App() {
   }
 
   function handleAddItemSubmit(item) {
+    setIsLoading(true);
     apiAddItem(item)
       .then(setClothingItems([item, ...clothingItems]))
-      .catch((err) => console.error(`API Error: ${err}`));
+      .catch((err) => console.error(`API Error: ${err}`))
+      .finally(() => setIsLoading(false));
   }
 
   function openConfirmationModal(card) {
@@ -69,13 +73,15 @@ function App() {
   }
 
   function handleCardDelete() {
+    setIsLoading(true);
     apiDeleteItem(selectedCard.id)
       .then(
         setClothingItems(
           [...clothingItems].filter((item) => item.id !== selectedCard.id)
         )
       )
-      .catch((err) => console.error(`API Error: ${err}`));
+      .catch((err) => console.error(`API Error: ${err}`))
+      .finally(() => setIsLoading(false));
 
     closeModals();
   }
@@ -133,6 +139,7 @@ function App() {
             handleButtonClose={closeModals}
             handleOverlayClose={handleOverlayClose}
             onAddItem={handleAddItemSubmit}
+            isLoading={isLoading}
           />
         )}
         {activeModal === "show-cloth" && (
@@ -148,6 +155,7 @@ function App() {
             handleButtonClose={closeModals}
             handleOverlayClose={handleOverlayClose}
             handleCardDelete={handleCardDelete}
+            isLoading={isLoading}
           />
         )}
       </CurrentTemperatureUnitContext.Provider>
