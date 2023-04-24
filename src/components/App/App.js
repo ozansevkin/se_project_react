@@ -62,7 +62,10 @@ function App() {
   function handleAddItemSubmit(item) {
     setIsLoading(true);
     apiAddItem(item)
-      .then(setClothingItems([item, ...clothingItems]))
+      .then(() => {
+        setClothingItems([item, ...clothingItems]);
+        closeModals();
+      })
       .catch((err) => console.error(`API Error: ${err}`))
       .finally(() => setIsLoading(false));
   }
@@ -75,15 +78,14 @@ function App() {
   function handleCardDelete() {
     setIsLoading(true);
     apiDeleteItem(selectedCard.id)
-      .then(
+      .then(() => {
         setClothingItems(
           [...clothingItems].filter((item) => item.id !== selectedCard.id)
-        )
-      )
+        );
+        closeModals();
+      })
       .catch((err) => console.error(`API Error: ${err}`))
       .finally(() => setIsLoading(false));
-
-    closeModals();
   }
 
   useEffect(() => {

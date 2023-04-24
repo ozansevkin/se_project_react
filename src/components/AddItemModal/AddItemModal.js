@@ -20,8 +20,6 @@ function AddItemModal({
       weather: values.weather,
       imageUrl: values.imageUrl,
     });
-
-    handleButtonClose();
   }
 
   return (
