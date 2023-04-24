@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/se_project_react/static/css/main.8e565582.css",
+    "main.css": "/se_project_react/static/css/main.bd490e6d.css",
     "main.js": "/se_project_react/static/js/main.dc1896e7.js",
     "static/js/787.79f92504.chunk.js": "/se_project_react/static/js/787.79f92504.chunk.js",
     "static/media/avatarWithImage.svg": "/se_project_react/static/media/avatarWithImage.e4c322676c30acbc98bf665359e6b948.svg",
@@ -19,12 +19,12 @@
     "static/media/closeButtonIcon.svg": "/se_project_react/static/media/closeButtonIcon.27b76503988ebf4617d917e54b0ca745.svg",
     "static/media/day__sunny.svg": "/se_project_react/static/media/day__sunny.150b083a01ff908edf15a2f408e0e113.svg",
     "static/media/night__sunny.svg": "/se_project_react/static/media/night__sunny.8077ca1cc7a6c1a216f667d223b6b20c.svg",
-    "main.8e565582.css.map": "/se_project_react/static/css/main.8e565582.css.map",
+    "main.bd490e6d.css.map": "/se_project_react/static/css/main.bd490e6d.css.map",
     "main.dc1896e7.js.map": "/se_project_react/static/js/main.dc1896e7.js.map",
     "787.79f92504.chunk.js.map": "/se_project_react/static/js/787.79f92504.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8e565582.css",
+    "static/css/main.bd490e6d.css",
     "static/js/main.dc1896e7.js"
   ]
 }
