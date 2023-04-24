@@ -9,11 +9,17 @@
   margin: 34px 0 0 0;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(164px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
   gap: min(calc(13px + 0.533vw), 20px); /* ~15px at 375 ~20px at 1440 */
 }
 
 .main__list-item {
   display: flex;
   justify-content: center;
+}
+
+@media screen and (max-width: 750px) {
+  .main__list {
+    grid-template-columns: repeat(auto-fit, minmax(164px, 1fr));
+  }
 }
