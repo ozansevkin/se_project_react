@@ -20,7 +20,6 @@ function ModalWithForm({
           name={named}
           className="form modal__form"
           onSubmit={handleSubmit}
-          noValidate
         >
           <h2 className="form__title">{title}</h2>
 
