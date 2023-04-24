@@ -1,50 +1,19 @@
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState, useRef } from "react";
+// import { useState, useRef } from "react";
+import useFormAndValidation from "../../hooks/useFormAndValidation";
 
 function AddItemModal({ onAddItem, handleButtonClose, handleOverlayClose }) {
-  const [name, setName] = useState("");
-  const [imageUrl, setImage] = useState("");
-  const [weather, setWeather] = useState("");
-  const [nameValidity, setNameValidity] = useState(false);
-  const [imageUrlValidity, setImageUrlValidity] = useState(false);
-  const [weatherValidity, setWeatherValidity] = useState(false);
-  const [formValidity, setformValidity] = useState(false);
-  const nameValidationMessage = useRef("");
-  const imageUrlValidationMessage = useRef("");
-
-  function handleNameChange(e) {
-    setName(e.target.value);
-    setNameValidity(e.target.validity.valid);
-    setformValidity(
-      e.target.validity.valid && imageUrlValidity && weatherValidity
-    );
-    nameValidationMessage.current = e.target.validationMessage;
-  }
-
-  function handleImageUrlChange(e) {
-    setImage(e.target.value);
-    setImageUrlValidity(e.target.validity.valid);
-    setformValidity(e.target.validity.valid && nameValidity && weatherValidity);
-    imageUrlValidationMessage.current = e.target.validationMessage;
-  }
-
-  function handleWeatherChange(e) {
-    setWeather(e.target.value);
-    setWeatherValidity(e.target.validity.valid);
-    setformValidity(
-      e.target.validity.valid && nameValidity && imageUrlValidity
-    );
-  }
+  const { values, handleChange, errors, isValid } = useFormAndValidation();
 
   function handleSubmit(e) {
     e.preventDefault();
 
     onAddItem({
       id: Math.floor(Math.random() * (100 - 17) + 17),
-      name,
-      weather,
-      imageUrl,
+      name: values.name,
+      weather: values.weather,
+      imageUrl: values.imageUrl,
     });
 
     handleButtonClose();
@@ -58,45 +27,44 @@ function AddItemModal({ onAddItem, handleButtonClose, handleOverlayClose }) {
       handleButtonClose={handleButtonClose}
       handleOverlayClose={handleOverlayClose}
       handleSubmit={handleSubmit}
-      formValidity={formValidity}
+      formValidity={isValid}
     >
       <label
         className={`form__text-input-label ${
-          nameValidationMessage.current && "form__text-input-label--error"
+          errors.name && "form__text-input-label--error"
         }`}
       >
         Name
-        {nameValidationMessage.current && ` (${nameValidationMessage.current})`}
+        {errors.name && ` (${errors.name})`}
         <input
           type="text"
           name="name"
           placeholder="Name"
           className={`form__text-input ${
-            nameValidationMessage.current && "form__text-input--error"
+            errors.name && "form__text-input--error"
           }`}
           required
-          value={name}
-          onChange={handleNameChange}
+          value={values.name}
+          onChange={handleChange}
         />
       </label>
       <label
         className={`form__text-input-label ${
-          imageUrlValidationMessage.current && "form__text-input-label--error"
+          errors.imageUrl && "form__text-input-label--error"
         }`}
       >
         Image
-        {imageUrlValidationMessage.current &&
-          ` (${imageUrlValidationMessage.current})`}
+        {errors.imageUrl && ` (${errors.imageUrl})`}
         <input
           type="url"
           name="imageUrl"
           placeholder="Image URL"
           className={`form__text-input ${
-            imageUrlValidationMessage.current && "form__text-input--error"
+            errors.imageUrl && "form__text-input--error"
           }`}
           required
-          value={imageUrl}
-          onChange={handleImageUrlChange}
+          value={values.imageUrl}
+          onChange={handleChange}
         />
       </label>
 
@@ -109,8 +77,8 @@ function AddItemModal({ onAddItem, handleButtonClose, handleOverlayClose }) {
             value="hot"
             className="form__radio-input"
             required
-            checked={weather === "hot"}
-            onChange={handleWeatherChange}
+            checked={values.weather === "hot"}
+            onChange={handleChange}
           />
           <span className="form__radio-input-design"></span>
           <span className="form__radio-input-design-text">Hot</span>
@@ -122,8 +90,8 @@ function AddItemModal({ onAddItem, handleButtonClose, handleOverlayClose }) {
             name="weather"
             value="warm"
             className="form__radio-input"
-            checked={weather === "warm"}
-            onChange={handleWeatherChange}
+            checked={values.weather === "warm"}
+            onChange={handleChange}
           />
           <span className="form__radio-input-design"></span>
           <span className="form__radio-input-design-text">Warm</span>
@@ -135,8 +103,8 @@ function AddItemModal({ onAddItem, handleButtonClose, handleOverlayClose }) {
             name="weather"
             value="cold"
             className="form__radio-input"
-            checked={weather === "cold"}
-            onChange={handleWeatherChange}
+            checked={values.weather === "cold"}
+            onChange={handleChange}
           />
           <span className="form__radio-input-design"></span>
           <span className="form__radio-input-design-text">Cold</span>
