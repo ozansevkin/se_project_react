@@ -1,4 +1,5 @@
 import { weatherApiOptions as options } from "./constants";
+import { processServerResponse } from "./api";
 
 // temp in Fahrenheit
 function getTempRange(temp) {
@@ -59,15 +60,6 @@ function processData(data) {
   processedData.time = getTimeOfTheDay(data.sys.sunrise, data.sys.sunset);
 
   return processedData;
-}
-
-function processServerResponse(res) {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(
-    `Network response was not ok. Status: ${res.status} - ${res.statusText}`
-  );
 }
 
 async function weatherApi() {

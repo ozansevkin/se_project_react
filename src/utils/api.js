@@ -37,4 +37,4 @@ function apiDeleteItem(id) {
   });
 }
 
-export { apiGetItems, apiAddItem, apiDeleteItem };
+export { apiGetItems, apiAddItem, apiDeleteItem, processServerResponse };
