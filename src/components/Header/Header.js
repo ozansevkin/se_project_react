@@ -27,7 +27,7 @@ function Header({
     return () => {
       window.removeEventListener("resize", handleResizeWindow);
     };
-  });
+  }, [isMobileMenuOpened, toggleMobileMenu]);
 
   function setClassForMobileMenu(className) {
     return `${className} ${isMobileMenuOpened && `${className}--menu-opened`}`;
