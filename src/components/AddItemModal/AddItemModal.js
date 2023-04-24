@@ -9,7 +9,11 @@ function AddItemModal({
   handleOverlayClose,
   isLoading,
 }) {
-  const { values, handleChange, errors, isValid } = useFormAndValidation();
+  const { values, handleChange, errors, isValid } = useFormAndValidation({
+    name: "",
+    weather: "",
+    imageUrl: "",
+  });
 
   function handleSubmit(e) {
     e.preventDefault();
