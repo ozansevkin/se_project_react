@@ -47,15 +47,9 @@ function App() {
     setSelectedCard({});
   }
 
-  function handleEscClose(e) {
-    if (e.key === "Escape") {
-      return closeModals();
-    }
-  }
-
   function handleOverlayClose(e) {
     if (e.target === e.currentTarget) {
-      return closeModals();
+      closeModals();
     }
   }
 
@@ -99,12 +93,21 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (!activeModal) return;
+
+    function handleEscClose(e) {
+      if (e.key === "Escape") {
+        closeModals();
+      }
+    }
+
     document.addEventListener("keydown", handleEscClose);
 
     return () => {
       document.removeEventListener("keydown", handleEscClose);
     };
-  });
+  }),
+    [activeModal];
 
   return (
     <div className="app">
