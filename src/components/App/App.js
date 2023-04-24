@@ -106,8 +106,7 @@ function App() {
     return () => {
       document.removeEventListener("keydown", handleEscClose);
     };
-  }),
-    [activeModal];
+  }, [activeModal]);
 
   return (
     <div className="app">
