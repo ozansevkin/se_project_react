@@ -13,13 +13,15 @@ function Main({
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
-  const listItems = clothingItems
-    .filter((item) => item.weather === weather)
-    .map((item) => (
-      <li key={item.id} className="main__list-item">
-        <ItemCard cardData={item} handleCardClick={handleCardClick} />
-      </li>
-    ));
+  const listItems =
+    clothingItems.length &&
+    clothingItems
+      .filter((item) => item.weather === weather)
+      .map((item) => (
+        <li key={item.id} className="main__list-item">
+          <ItemCard cardData={item} handleCardClick={handleCardClick} />
+        </li>
+      ));
 
   return (
     <main className="main">
