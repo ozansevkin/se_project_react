@@ -6,7 +6,7 @@ import AddItemModal from "../AddItemModal/AddItemModal";
 import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
-import { apiGetItems, apiAddItem, apiDeleteItem } from "../../utils/api";
+import * as api from "../../utils/api";
 import weatherApi from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { useEffect, useState } from "react";
@@ -55,7 +55,8 @@ function App() {
 
   function handleAddItemSubmit(item) {
     setIsLoading(true);
-    apiAddItem(item)
+    api
+      .addItem(item)
       .then(() => {
         setClothingItems([item, ...clothingItems]);
         closeModals();
@@ -71,7 +72,8 @@ function App() {
 
   function handleCardDelete() {
     setIsLoading(true);
-    apiDeleteItem(selectedCard.id)
+    api
+      .deleteItem(selectedCard.id)
       .then(() => {
         setClothingItems(
           [...clothingItems].filter((item) => item.id !== selectedCard.id)
@@ -87,7 +89,8 @@ function App() {
       .then(setWeatherData)
       .catch((err) => console.error(`Weather API Error: ${err}`));
 
-    apiGetItems()
+    api
+      .getItems()
       .then(setClothingItems)
       .catch((err) => console.error(`API Error: ${err}`));
   }, []);

@@ -20,11 +20,11 @@ async function request(url, options) {
   return processServerResponse(res);
 }
 
-function apiGetItems() {
+function getItems() {
   return request(`${baseUrl}/items`);
 }
 
-function apiAddItem(item) {
+function addItem(item) {
   return request(`${baseUrl}/items`, {
     method: "POST",
     headers,
@@ -32,10 +32,17 @@ function apiAddItem(item) {
   });
 }
 
-function apiDeleteItem(id) {
+function deleteItem(id) {
   return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
   });
 }
 
-export { apiGetItems, apiAddItem, apiDeleteItem, processServerResponse };
+export {
+  getItems,
+  addItem,
+  deleteItem,
+  processServerResponse,
+  baseUrl,
+  headers,
+};
