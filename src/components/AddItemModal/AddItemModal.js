@@ -1,6 +1,5 @@
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-// import { useState, useRef } from "react";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 
 function AddItemModal({
