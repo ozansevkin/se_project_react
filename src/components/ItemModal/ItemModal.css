@@ -39,12 +39,12 @@
   cursor: pointer;
 }
 
-.card__image {
+.item__image {
   width: 100%;
   object-fit: contain;
   justify-self: start;
 }
-.card__info {
+.item__info {
   /* align-self: flex-start; */
   width: calc(100% - 32px * 2);
   display: grid;
@@ -57,17 +57,18 @@
   line-height: 1.2;
 }
 
-.card__detail {
+.item__detail {
   grid-area: detail;
   margin: 0;
 }
 
-.card__title {
+.item__title {
   grid-area: title;
   margin: 0;
 }
 
-.card__delete-button {
+.item__delete-button {
+  display: none;
   grid-area: delete;
   justify-self: flex-end;
   width: max-content;
@@ -82,6 +83,10 @@
   line-height: inherit;
 }
 
-.card__delete-button:hover {
+.item__delete-button--visible {
+  display: block;
+}
+
+.item__delete-button:hover {
   text-decoration: underline;
 }
