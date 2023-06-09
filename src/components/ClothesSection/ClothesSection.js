@@ -7,13 +7,15 @@ function ClothesSection({
   handleCardClick,
   setActiveModal,
 }) {
-  const listItems = clothingItems
-    .filter((item) => item.weather === weather)
-    .map((item) => (
-      <li key={item.id} className="main__list-item">
-        <ItemCard cardData={item} handleCardClick={handleCardClick} />
-      </li>
-    ));
+  const listItems =
+    clothingItems.length > 0 &&
+    clothingItems
+      .filter((item) => item.weather === weather)
+      .map((item) => (
+        <li key={item.id} className="main__list-item">
+          <ItemCard cardData={item} handleCardClick={handleCardClick} />
+        </li>
+      ));
 
   return (
     <section className="clothes-section">

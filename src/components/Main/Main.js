@@ -14,7 +14,7 @@ function Main({
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
   const listItems =
-    clothingItems.length &&
+    clothingItems.length > 0 &&
     clothingItems
       .filter((item) => item.weather === weather)
       .map((item) => (
