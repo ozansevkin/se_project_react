@@ -1,8 +1,9 @@
 import "./Header.css";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import logo from "../../images/logo.svg";
-import avatar from "../../images/avatarWithImage.svg";
-import { useEffect } from "react";
+import avatarPlaceHolder from "../../images/avatarPlaceholder.svg";
+import { useEffect, useContext } from "react";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
 import { headerMobileBreakpointWidth as mobileBreakPointWidth } from "../../utils/constants";
 
@@ -17,6 +18,8 @@ function Header({
   isMobileMenuOpened,
   toggleMobileMenu,
 }) {
+  const currentUser = useContext(CurrentUserContext);
+
   useEffect(() => {
     const handleResizeWindow = () => {
       if (window.innerWidth >= mobileBreakPointWidth && isMobileMenuOpened) {
@@ -55,8 +58,19 @@ function Header({
             + Add Clothes
           </button>
           <Link to="/profile" className="header__profile">
-            <p className="header__user-name">Ozan Sevkin</p>
-            <img className="header__avatar" src={avatar} alt="User Avatar" />
+            <p className="header__user-name">{currentUser.name}</p>
+            <div className="header__avatar">
+              <img
+                className="header__avatar-image"
+                src={
+                  currentUser.avatar ? currentUser.avatar : avatarPlaceHolder
+                }
+                alt="User Avatar"
+              />
+              {!currentUser.avatar && (
+                <p className="header__avatar-letter">{currentUser.name[0]}</p>
+              )}
+            </div>
           </Link>
         </div>
         <button
