@@ -45,4 +45,5 @@ export {
   processServerResponse,
   baseUrl,
   headers,
+  request,
 };
