@@ -18,4 +18,15 @@ function login({ email, password }) {
   });
 }
 
-export { register, login };
+//check token for user authorization
+function checkToken(token) {
+  return request(`${baseUrl}/user/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+export { register, login, checkToken };

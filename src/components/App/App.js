@@ -58,7 +58,7 @@ function App() {
   function handleAddItemSubmit(item) {
     setIsLoading(true);
     api
-      .addItem(item)
+      .addItem(item, localStorage.getItem("jwt"))
       .then(() => {
         setClothingItems([item, ...clothingItems]);
         closeModals();
@@ -75,7 +75,7 @@ function App() {
   function handleCardDelete() {
     setIsLoading(true);
     api
-      .deleteItem(selectedCard.id)
+      .deleteItem(selectedCard.id, localStorage.getItem("jwt"))
       .then(() => {
         setClothingItems(
           [...clothingItems].filter((item) => item.id !== selectedCard.id)
@@ -119,6 +119,15 @@ function App() {
       .getItems()
       .then(setClothingItems)
       .catch((err) => console.error(`API Error: ${err}`));
+  }, []);
+
+  useEffect(() => {
+    auth
+      .checkToken(localStorage.getItem("jwt"))
+      .then((data) => {
+        // sign user in
+      })
+      .catch((err) => console.error(`Auth Error: ${err}`));
   }, []);
 
   useEffect(() => {
