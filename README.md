@@ -10,6 +10,8 @@ The idea of the application is pretty simple - It makes a call to an API, which 
 
 - [Figma Design](https://www.figma.com/file/F03bTb81Pw8IDPj5Y9rc5i/Sprint-10-%7C-WTWR)
 
+- [Backend Repo](https://github.com/ozansevkin/se_project_express)
+
 - [Production](https://ozansevkin.github.io/se_project_react/)
 
 ## Built with
