@@ -7,6 +7,7 @@ import ItemModal from "../ItemModal/ItemModal";
 import Profile from "../Profile/Profile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import * as api from "../../utils/api";
+import * as auth from "../../utils/auth";
 import weatherApi from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { useEffect, useState } from "react";
@@ -82,6 +83,30 @@ function App() {
         closeModals();
       })
       .catch((err) => console.error(`API Error: ${err}`))
+      .finally(() => setIsLoading(false));
+  }
+
+  function handleRegisterUserSubmit(user) {
+    setIsLoading(true);
+    auth
+      .register(user)
+      .then(() => {
+        // sign user in
+        closeModals();
+      })
+      .catch((err) => console.error(`Auth Error: ${err}`))
+      .finally(() => setIsLoading(false));
+  }
+
+  function handleLoginUserSUbmit(user) {
+    setIsLoading(true);
+    auth
+      .login(user)
+      .then((data) => {
+        localStorage.setItem("jwt", data.token);
+        closeModals();
+      })
+      .catch((err) => console.error(`Auth Error: ${err}`))
       .finally(() => setIsLoading(false));
   }
 
@@ -163,6 +188,22 @@ function App() {
             handleButtonClose={closeModals}
             handleOverlayClose={handleOverlayClose}
             handleCardDelete={handleCardDelete}
+            isLoading={isLoading}
+          />
+        )}
+        {activeModal === "register" && (
+          <RegisterModal
+            handleButtonClose={closeModals}
+            handleOverlayClose={handleOverlayClose}
+            onRegisterUser={handleRegisterUserSubmit}
+            isLoading={isLoading}
+          />
+        )}
+        {activeModal === "login" && (
+          <LoginModal
+            handleButtonClose={closeModals}
+            handleOverlayClose={handleOverlayClose}
+            onLoginUser={handleLoginUserSUbmit}
             isLoading={isLoading}
           />
         )}

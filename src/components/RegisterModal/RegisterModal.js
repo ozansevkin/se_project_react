@@ -3,7 +3,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 
 function RegisterModal({
-  onRegister,
+  onRegisterUser,
   handleButtonClose,
   handleOverlayClose,
   isLoading,
@@ -18,7 +18,7 @@ function RegisterModal({
   function handleSubmit(e) {
     e.preventDefault();
 
-    onRegister({
+    onRegisterUser({
       email: values.email,
       password: values.password,
       name: values.name,

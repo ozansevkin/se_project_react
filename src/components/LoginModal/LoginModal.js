@@ -3,7 +3,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 
 function LoginModal({
-  onLogin,
+  onLoginUser,
   handleButtonClose,
   handleOverlayClose,
   isLoading,
@@ -16,7 +16,7 @@ function LoginModal({
   function handleSubmit(e) {
     e.preventDefault();
 
-    onLogin({
+    onLoginUser({
       email: values.email,
       password: values.password,
     });
