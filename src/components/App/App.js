@@ -11,6 +11,7 @@ import weatherApi from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [weatherData, setWeatherData] = useState({ temp: {} });
@@ -123,14 +124,14 @@ function App() {
           toggleMobileMenu={toggleMobileMenu}
         />
         <Switch>
-          <Route exact path="/profile">
+          <ProtectedRoute exact path="/profile" loggedIn={true}>
             <Profile
               clothingItems={clothingItems}
               weather={weatherData.weather}
               handleCardClick={handleCardClick}
               setActiveModal={setActiveModal}
             />
-          </Route>
+          </ProtectedRoute>
           <Route path="/">
             <Main
               clothingItems={clothingItems}
