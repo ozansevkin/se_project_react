@@ -68,7 +68,9 @@ function Header({
                 alt="User Avatar"
               />
               {!currentUser.avatar && (
-                <p className="header__avatar-letter">{currentUser.name[0]}</p>
+                <p className="header__avatar-letter">
+                  {currentUser.name.charAt(0)}
+                </p>
               )}
             </div>
           </Link>
