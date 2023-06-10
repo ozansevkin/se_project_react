@@ -173,7 +173,7 @@ function App() {
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
-        <div className="app">
+        <div className="page">
           <Header
             city={weatherData.city}
             setActiveModal={setActiveModal}

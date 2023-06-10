@@ -52,7 +52,7 @@ function Header({
         <div className={setClassForMobileMenu("header__wrapper-right")}>
           <ToggleSwitch />
           <button
-            className="header__text-button"
+            className="page__text-button header__text-button"
             onClick={() => setActiveModal("add-cloth")}
           >
             + Add Clothes

@@ -5,7 +5,7 @@ import ClothesSection from "../ClothesSection/ClothesSection";
 function Profile({ clothingItems, weather, handleCardClick, setActiveModal }) {
   return (
     <div className="profile">
-      <SideBar />
+      <SideBar setActiveModal={setActiveModal} />
       <ClothesSection
         clothingItems={clothingItems}
         weather={weather}

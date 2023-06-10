@@ -10,6 +10,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
+  margin-bottom: 16px;
 }
 
 .sidebar__avatar {
@@ -20,4 +21,8 @@
   margin: 0;
   font-weight: 700;
   font-size: 20px;
+}
+
+.sidebar__text-button {
+  margin-top: 8px;
 }

@@ -93,14 +93,7 @@
 }
 
 .header__text-button {
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  background: none;
-  border: none;
-  margin: 0 0 0 20px;
-  padding: 0;
+  margin-left: 20px;
 }
 
 .header__text-button:hover {

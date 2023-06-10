@@ -1,8 +1,19 @@
-.app {
+.page {
   max-width: 1360px;
   height: 100%;
   margin: 0 auto;
   padding: 0 var(--page-side-padding);
   display: flex;
   flex-direction: column;
+}
+
+.page__text-button {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
