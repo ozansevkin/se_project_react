@@ -1,4 +1,5 @@
 import "./SideBar.css";
+import { useContext } from "react";
 import avatarPlaceholder from "../../images/avatarPlaceholder.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
