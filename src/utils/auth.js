@@ -1,6 +1,5 @@
 import { baseUrl, headers, request } from "./api";
 
-//signup for user registration
 function register({ name, avatar, email, password }) {
   return request(`${baseUrl}/signup`, {
     method: "POST",
@@ -9,7 +8,6 @@ function register({ name, avatar, email, password }) {
   });
 }
 
-//signin for user authorization
 function login({ email, password }) {
   return request(`${baseUrl}/signin`, {
     method: "POST",
@@ -18,7 +16,7 @@ function login({ email, password }) {
   });
 }
 
-//check token for user authorization
+//check token for user authentication
 function checkToken(token) {
   return request(`${baseUrl}/user/me`, {
     method: "GET",
@@ -29,4 +27,15 @@ function checkToken(token) {
   });
 }
 
-export { register, login, checkToken };
+function updateProfile({ name, avatar }, token) {
+  return request(`${baseUrl}/user/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({ name, avatar }),
+  });
+}
+
+export { register, login, checkToken, updateProfile };

@@ -8,6 +8,7 @@ import Profile from "../Profile/Profile";
 import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
+import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import * as api from "../../utils/api";
 import * as auth from "../../utils/auth";
 import weatherApi from "../../utils/weatherApi";
@@ -119,6 +120,18 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
+  function handleEditProfileSubmit(user) {
+    setIsLoading(true);
+    auth
+      .updateProfile(user, localStorage.getItem("jwt"))
+      .then((data) => {
+        setCurrentUser(data);
+        closeModals();
+      })
+      .catch((err) => console.error(`Auth Error: ${err}`))
+      .finally(() => setIsLoading(false));
+  }
+
   useEffect(() => {
     weatherApi()
       .then(setWeatherData)
@@ -223,6 +236,14 @@ function App() {
               handleButtonClose={closeModals}
               handleOverlayClose={handleOverlayClose}
               onLoginUser={handleLoginUserSubmit}
+              isLoading={isLoading}
+            />
+          )}
+          {activeModal === "edit-profile" && (
+            <EditProfileModal
+              handleButtonClose={closeModals}
+              handleOverlayClose={handleOverlayClose}
+              onEditProfile={handleEditProfileSubmit}
               isLoading={isLoading}
             />
           )}
