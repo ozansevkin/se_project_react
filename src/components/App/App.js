@@ -35,7 +35,7 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const [currentUser, setCurrentUser] = useState({ name: "", avatar: "" });
+  const [currentUser, setCurrentUser] = useState({ name: "Ozan", avatar: "" });
 
   function handleToggleSwitchChange() {
     currentTemperatureUnit === "F"

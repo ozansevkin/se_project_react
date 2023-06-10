@@ -39,7 +39,7 @@ function Header({
     <header className="header">
       {!isMobileMenuOpened && (
         <div className="header__wrapper-left">
-          <Link to="/">
+          <Link to="/" className="header__logo-link">
             <img className="header__logo" src={logo} alt="logo" />
           </Link>
           <p className="header__info">
@@ -57,7 +57,7 @@ function Header({
           >
             + Add Clothes
           </button>
-          <Link to="/profile" className="header__profile">
+          <Link to="/profile" className="header__profile-link">
             <p className="header__user-name">{currentUser.name}</p>
             <div className="header__avatar">
               <img
