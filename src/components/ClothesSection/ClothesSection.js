@@ -1,5 +1,6 @@
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ClothesSection({
   clothingItems,
@@ -7,10 +8,14 @@ function ClothesSection({
   handleCardClick,
   setActiveModal,
 }) {
+  const currentUser = useContext(CurrentUserContext);
+
   const listItems =
     clothingItems.length > 0 &&
     clothingItems
-      .filter((item) => item.weather === weather)
+      .filter(
+        (item) => item.weather === weather && item.owner._id === currentUser._id
+      )
       .map((item) => (
         <li key={item.id} className="main__list-item">
           <ItemCard cardData={item} handleCardClick={handleCardClick} />

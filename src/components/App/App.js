@@ -24,7 +24,7 @@ function App() {
 
   const [activeModal, setActiveModal] = useState("");
 
-  const [selectedCard, setSelectedCard] = useState({});
+  const [selectedItem, setSelectedItem] = useState({});
 
   const [isMobileMenuOpened, setIsMobileMenuOpened] = useState(false);
 
@@ -46,14 +46,14 @@ function App() {
     setIsMobileMenuOpened(!isMobileMenuOpened);
   }
 
-  function handleCardClick(card) {
+  function handleCardClick(item) {
     setActiveModal("show-cloth");
-    setSelectedCard(card);
+    setSelectedItem(item);
   }
 
   function closeModals() {
     setActiveModal("");
-    setSelectedCard({});
+    setSelectedItem({});
   }
 
   function handleOverlayClose(e) {
@@ -76,16 +76,16 @@ function App() {
 
   function openConfirmationModal(card) {
     setActiveModal("delete-cloth");
-    setSelectedCard(card);
+    setSelectedItem(card);
   }
 
-  function handleCardDelete() {
+  function handleItemDelete() {
     setIsLoading(true);
     api
-      .deleteItem(selectedCard.id, localStorage.getItem("jwt"))
+      .deleteItem(selectedItem.id, localStorage.getItem("jwt"))
       .then(() => {
         setClothingItems(
-          [...clothingItems].filter((item) => item.id !== selectedCard.id)
+          [...clothingItems].filter((item) => item.id !== selectedItem.id)
         );
         closeModals();
       })
@@ -196,7 +196,7 @@ function App() {
           )}
           {activeModal === "show-cloth" && (
             <ItemModal
-              cardData={selectedCard}
+              itemData={selectedItem}
               handleButtonClose={closeModals}
               handleOverlayClose={handleOverlayClose}
               openConfirmationModal={openConfirmationModal}
@@ -206,7 +206,7 @@ function App() {
             <DeleteConfirmationModal
               handleButtonClose={closeModals}
               handleOverlayClose={handleOverlayClose}
-              handleCardDelete={handleCardDelete}
+              handleItemDelete={handleItemDelete}
               isLoading={isLoading}
             />
           )}
