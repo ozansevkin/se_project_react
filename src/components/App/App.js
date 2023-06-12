@@ -163,6 +163,12 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
+  function handleLogout() {
+    setIsLoggedIn(false);
+    setCurrentUser({});
+    localStorage.removeItem("jwt");
+  }
+
   useEffect(() => {
     weatherApi()
       .then(setWeatherData)
@@ -210,6 +216,7 @@ function App() {
             setActiveModal={setActiveModal}
             isMobileMenuOpened={isMobileMenuOpened}
             toggleMobileMenu={toggleMobileMenu}
+            isLoggedIn={isLoggedIn}
           />
           <Switch>
             <ProtectedRoute exact path="/profile" isLoggedIn={isLoggedIn}>
@@ -218,6 +225,7 @@ function App() {
                 weather={weatherData.weather}
                 handleCardClick={handleCardClick}
                 setActiveModal={setActiveModal}
+                onLogout={handleLogout}
               />
             </ProtectedRoute>
             <Route path="/">

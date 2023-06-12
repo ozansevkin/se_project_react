@@ -17,6 +17,7 @@ function Header({
   setActiveModal,
   isMobileMenuOpened,
   toggleMobileMenu,
+  isLoggedIn,
 }) {
   const currentUser = useContext(CurrentUserContext);
 
@@ -51,29 +52,50 @@ function Header({
       <div className={setClassForMobileMenu("header__menu-modal")}>
         <div className={setClassForMobileMenu("header__wrapper-right")}>
           <ToggleSwitch />
-          <button
-            className="page__text-button header__text-button"
-            onClick={() => setActiveModal("add-cloth")}
-          >
-            + Add Clothes
-          </button>
-          <Link to="/profile" className="header__profile-link">
-            <p className="header__user-name">{currentUser.name}</p>
-            <div className="header__avatar">
-              <img
-                className="header__avatar-image"
-                src={
-                  currentUser.avatar ? currentUser.avatar : avatarPlaceHolder
-                }
-                alt="User Avatar"
-              />
-              {!currentUser.avatar && (
-                <p className="header__avatar-letter">
-                  {currentUser.name.charAt(0)}
-                </p>
-              )}
-            </div>
-          </Link>
+          {isLoggedIn ? (
+            <>
+              <button
+                className="page__text-button header__text-button"
+                onClick={() => setActiveModal("add-cloth")}
+              >
+                + Add Clothes
+              </button>
+              <Link to="/profile" className="header__profile-link">
+                <p className="header__user-name">{currentUser.name}</p>
+                <div className="header__avatar">
+                  <img
+                    className="header__avatar-image"
+                    src={
+                      currentUser.avatar
+                        ? currentUser.avatar
+                        : avatarPlaceHolder
+                    }
+                    alt="User Avatar"
+                  />
+                  {!currentUser.avatar && (
+                    <p className="header__avatar-letter">
+                      {currentUser.name.charAt(0)}
+                    </p>
+                  )}
+                </div>
+              </Link>
+            </>
+          ) : (
+            <>
+              <button
+                className="page__text-button header__text-button"
+                onClick={() => setActiveModal("register")}
+              >
+                Sign Up
+              </button>
+              <button
+                className="page__text-button header__text-button"
+                onClick={() => setActiveModal("login")}
+              >
+                Log In
+              </button>
+            </>
+          )}
         </div>
         <button
           className={setClassForMobileMenu("header__menu-button menu-button")}

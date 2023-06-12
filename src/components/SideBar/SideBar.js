@@ -3,7 +3,7 @@ import { useContext } from "react";
 import avatarPlaceholder from "../../images/avatarPlaceholder.svg";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
-function SideBar({ setActiveModal }) {
+function SideBar({ setActiveModal, onLogout }) {
   const currentUser = useContext(CurrentUserContext);
 
   return (
@@ -24,7 +24,7 @@ function SideBar({ setActiveModal }) {
       </button>
       <button
         className="page__text-button sidebar__text-button"
-        onClick={true} //call logout user function
+        onClick={onLogout}
       >
         Log out
       </button>

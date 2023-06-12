@@ -2,10 +2,16 @@ import "./Profile.css";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 
-function Profile({ clothingItems, weather, handleCardClick, setActiveModal }) {
+function Profile({
+  clothingItems,
+  weather,
+  handleCardClick,
+  setActiveModal,
+  onLogout,
+}) {
   return (
     <div className="profile">
-      <SideBar setActiveModal={setActiveModal} />
+      <SideBar setActiveModal={setActiveModal} onLogout={onLogout} />
       <ClothesSection
         clothingItems={clothingItems}
         weather={weather}
