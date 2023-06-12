@@ -18,7 +18,7 @@ function login({ email, password }) {
 
 //check token for user authentication
 function checkToken(token) {
-  return request(`${baseUrl}/user/me`, {
+  return request(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -28,7 +28,7 @@ function checkToken(token) {
 }
 
 function updateProfile({ name, avatar }, token) {
-  return request(`${baseUrl}/user/me`, {
+  return request(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
