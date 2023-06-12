@@ -27,7 +27,7 @@ function ClothesSection({
     <section className="clothes-section">
       <h2 className="clothes-section__heading">Your Items</h2>
       <button
-        className="header__text-button clothes-section__text-button"
+        className="page__text-button clothes-section__text-button"
         onClick={() => setActiveModal("add-cloth")}
       >
         + Add New
