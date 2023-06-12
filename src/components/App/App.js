@@ -74,7 +74,7 @@ function App() {
     isLiked
       ? api
           .addItemLike(id, token)
-          .then((updatedItem) => {
+          .then(({ item: updatedItem }) => {
             setClothingItems(
               clothingItems.map((item) =>
                 item._id === id ? updatedItem : item
@@ -84,7 +84,7 @@ function App() {
           .catch((err) => console.error(`API Error: ${err}`))
       : api
           .removeItemLike(id, token)
-          .then((updatedItem) => {
+          .then(({ item: updatedItem }) => {
             setClothingItems(
               clothingItems.map((item) =>
                 item._id === id ? updatedItem : item
@@ -98,7 +98,7 @@ function App() {
     setIsLoading(true);
     api
       .addItem(item, localStorage.getItem("jwt"))
-      .then(() => {
+      .then(({ item }) => {
         setClothingItems([item, ...clothingItems]);
         closeModals();
       })
@@ -129,8 +129,8 @@ function App() {
     setIsLoading(true);
     auth
       .register(user)
-      .then((data) => {
-        setCurrentUser(data);
+      .then(({ user }) => {
+        setCurrentUser(user);
         setIsLoggedIn(true);
         closeModals();
       })
@@ -142,8 +142,11 @@ function App() {
     setIsLoading(true);
     auth
       .login(user)
-      .then((data) => {
-        localStorage.setItem("jwt", data.token);
+      .then(({ token }) => {
+        if (!token) {
+          return Promise.reject("JWT is not found.");
+        }
+        localStorage.setItem("jwt", token);
         setIsLoggedIn(true);
         closeModals();
       })
@@ -155,8 +158,8 @@ function App() {
     setIsLoading(true);
     auth
       .updateProfile(user, localStorage.getItem("jwt"))
-      .then((data) => {
-        setCurrentUser(data);
+      .then(({ user }) => {
+        setCurrentUser(user);
         closeModals();
       })
       .catch((err) => console.error(`Auth Error: ${err}`))
@@ -183,8 +186,9 @@ function App() {
   useEffect(() => {
     auth
       .checkToken(localStorage.getItem("jwt"))
-      .then((data) => {
-        // sign user in
+      .then(({ user }) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
       })
       .catch((err) => console.error(`Auth Error: ${err}`));
   }, []);
