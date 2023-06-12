@@ -9,7 +9,9 @@ function Main({
   weatherData,
   weatherData: { temp, weather },
   handleCardClick,
+  onCardLike,
   isMobileMenuOpened,
+  isLoggedIn,
 }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
 
@@ -19,7 +21,12 @@ function Main({
       .filter((item) => item.weather === weather)
       .map((item) => (
         <li key={item.id} className="main__list-item">
-          <ItemCard itemData={item} handleCardClick={handleCardClick} />
+          <ItemCard
+            itemData={item}
+            handleCardClick={handleCardClick}
+            onCardLike={onCardLike}
+            isLoggedIn={isLoggedIn}
+          />
         </li>
       ));
 

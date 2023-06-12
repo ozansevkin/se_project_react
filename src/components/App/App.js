@@ -35,7 +35,12 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const [currentUser, setCurrentUser] = useState({ name: "Ozan", avatar: "" });
+  const [currentUser, setCurrentUser] = useState({
+    _id: "",
+    name: "Ozan",
+    avatar: "",
+    email: "",
+  });
 
   function handleToggleSwitchChange() {
     currentTemperatureUnit === "F"
@@ -61,6 +66,32 @@ function App() {
     if (e.target === e.currentTarget) {
       closeModals();
     }
+  }
+
+  function handleCardLike(id, isLiked) {
+    const token = localStorage.getItem("jwt");
+
+    isLiked
+      ? api
+          .addItemLike(id, token)
+          .then((updatedItem) => {
+            setClothingItems(
+              clothingItems.map((item) =>
+                item._id === id ? updatedItem : item
+              )
+            );
+          })
+          .catch((err) => console.error(`API Error: ${err}`))
+      : api
+          .removeItemLike(id, token)
+          .then((updatedItem) => {
+            setClothingItems(
+              clothingItems.map((item) =>
+                item._id === id ? updatedItem : item
+              )
+            );
+          })
+          .catch((err) => console.error(`API Error: ${err}`));
   }
 
   function handleAddItemSubmit(item) {
@@ -194,7 +225,9 @@ function App() {
                 clothingItems={clothingItems}
                 weatherData={weatherData}
                 handleCardClick={handleCardClick}
+                onCardLike={handleCardLike}
                 isMobileMenuOpened={isMobileMenuOpened}
+                isLoggedIn={isLoggedIn}
               />
             </Route>
           </Switch>

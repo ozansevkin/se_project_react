@@ -15,17 +15,32 @@
   width: 100%;
   object-fit: contain;
 }
-.item-card__title {
-  width: max-content;
+
+.item-card__info {
   margin: 0 auto;
   position: absolute;
   top: 15px;
   left: 0;
   right: 0;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.item-card__title {
+  width: max-content;
   padding: 2px 12px;
   font-weight: 700;
   background-color: #fff;
   border-radius: 4px;
   color: rgba(0, 0, 0, 0.6);
   text-align: center;
+}
+
+.item-card__like {
+  display: none;
+}
+
+.item-card__like--visible {
+  display: block;
 }

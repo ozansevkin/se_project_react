@@ -44,10 +44,30 @@ function deleteItem(id, token) {
   });
 }
 
+function addItemLike(id, token) {
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+function removeItemLike(id, token) {
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
+}
+
 export {
   getItems,
   addItem,
   deleteItem,
+  addItemLike,
+  removeItemLike,
   processServerResponse,
   baseUrl,
   headers,
