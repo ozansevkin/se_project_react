@@ -182,7 +182,7 @@ function App() {
 
     api
       .getItems()
-      .then(setClothingItems)
+      .then(({ items }) => setClothingItems(items))
       .catch((err) => console.error(`API Error: ${err}`));
 
     auth
@@ -233,6 +233,7 @@ function App() {
                 handleCardClick={handleCardClick}
                 setActiveModal={setActiveModal}
                 onLogout={handleLogout}
+                onCardLike={handleCardLike}
               />
             </ProtectedRoute>
             <Route path="/">

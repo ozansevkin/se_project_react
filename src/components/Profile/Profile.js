@@ -8,6 +8,7 @@ function Profile({
   handleCardClick,
   setActiveModal,
   onLogout,
+  onCardLike,
 }) {
   return (
     <div className="profile">
@@ -17,6 +18,7 @@ function Profile({
         weather={weather}
         handleCardClick={handleCardClick}
         setActiveModal={setActiveModal}
+        onCardLike={onCardLike}
       />
     </div>
   );

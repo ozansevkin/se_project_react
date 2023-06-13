@@ -1,6 +1,6 @@
 import "./SideBar.css";
 import { useContext } from "react";
-import avatarPlaceholder from "../../images/avatarPlaceholder.svg";
+import Avatar from "../Avatar/Avatar";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function SideBar({ setActiveModal, onLogout }) {
@@ -9,11 +9,7 @@ function SideBar({ setActiveModal, onLogout }) {
   return (
     <aside className="sidebar">
       <div className="sidebar__profile">
-        <img
-          className="sidebar__avatar"
-          src={currentUser.avatar}
-          alt="User Avatar"
-        />
+        <Avatar size="56px" />
         <p className="sidebar__user-name">{currentUser.name}</p>
       </div>
       <button

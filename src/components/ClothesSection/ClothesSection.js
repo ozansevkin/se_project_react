@@ -8,6 +8,7 @@ function ClothesSection({
   weather,
   handleCardClick,
   setActiveModal,
+  onCardLike,
 }) {
   const currentUser = useContext(CurrentUserContext);
 
@@ -18,8 +19,13 @@ function ClothesSection({
         (item) => item.weather === weather && item.owner._id === currentUser._id
       )
       .map((item) => (
-        <li key={item.id} className="main__list-item">
-          <ItemCard cardData={item} handleCardClick={handleCardClick} />
+        <li key={item._id} className="main__list-item">
+          <ItemCard
+            itemData={item}
+            handleCardClick={handleCardClick}
+            onCardLike={onCardLike}
+            isLoggedIn={true}
+          />
         </li>
       ));
 

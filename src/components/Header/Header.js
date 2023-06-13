@@ -1,7 +1,7 @@
 import "./Header.css";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import Avatar from "../Avatar/Avatar";
 import logo from "../../images/logo.svg";
-import avatarPlaceHolder from "../../images/avatarPlaceholder.svg";
 import { useEffect, useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
@@ -62,22 +62,7 @@ function Header({
               </button>
               <Link to="/profile" className="header__profile-link">
                 <p className="header__user-name">{currentUser.name}</p>
-                <div className="header__avatar">
-                  <img
-                    className="header__avatar-image"
-                    src={
-                      currentUser.avatar
-                        ? currentUser.avatar
-                        : avatarPlaceHolder
-                    }
-                    alt="User Avatar"
-                  />
-                  {!currentUser.avatar && (
-                    <p className="header__avatar-letter">
-                      {currentUser.name.charAt(0)}
-                    </p>
-                  )}
-                </div>
+                <Avatar className="header__avatar" size="40px" />
               </Link>
             </>
           ) : (
