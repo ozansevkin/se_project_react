@@ -14,8 +14,8 @@ function ItemModal({
 
   const isOwn = owner._id === currentUser._id;
 
-  const itemDeleteButtonClassName = `item__delete-button ${
-    isOwn && "item__delete-button_visible"
+  const itemDeleteButtonClassName = `item__delete-button${
+    isOwn ? " item__delete-button--visible" : ""
   }`;
 
   return (

@@ -4,7 +4,7 @@ import closeButtonIcon from "../../images/closeButtonIcon.svg";
 function DeleteConfirmationModal({
   handleButtonClose,
   handleOverlayClose,
-  handleCardDelete,
+  handleItemDelete,
   isLoading,
 }) {
   return (
@@ -16,7 +16,7 @@ function DeleteConfirmationModal({
         <p className="confirmation__warning">This action is irreversible.</p>
         <button
           className="confirmation__text-button confirmation__text-button--type_confirm"
-          onClick={handleCardDelete}
+          onClick={handleItemDelete}
         >
           {isLoading ? "Deleting..." : "Yes, delete item"}
         </button>

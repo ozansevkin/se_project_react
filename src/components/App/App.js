@@ -114,10 +114,10 @@ function App() {
   function handleItemDelete() {
     setIsLoading(true);
     api
-      .deleteItem(selectedItem.id, localStorage.getItem("jwt"))
+      .deleteItem(selectedItem._id, localStorage.getItem("jwt"))
       .then(() => {
         setClothingItems(
-          [...clothingItems].filter((item) => item.id !== selectedItem.id)
+          [...clothingItems].filter((item) => item._id !== selectedItem._id)
         );
         closeModals();
       })
@@ -184,17 +184,20 @@ function App() {
       .getItems()
       .then(({ items }) => setClothingItems(items))
       .catch((err) => console.error(`API Error: ${err}`));
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    if (!token) return;
 
     auth
-      .checkToken(localStorage.getItem("jwt"))
+      .checkToken(token)
       .then(({ user }) => {
         setCurrentUser(user);
         setIsLoggedIn(true);
       })
       .catch((err) => console.error(`Auth Error: ${err}`));
   }, []);
-
-  // useEffect(() => {}, []);
 
   useEffect(() => {
     if (!activeModal) return;

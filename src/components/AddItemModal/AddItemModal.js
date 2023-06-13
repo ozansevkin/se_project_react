@@ -18,7 +18,6 @@ function AddItemModal({
     e.preventDefault();
 
     onAddItem({
-      id: Math.floor(Math.random() * (100 - 17) + 17),
       name: values.name,
       weather: values.weather,
       imageUrl: values.imageUrl,

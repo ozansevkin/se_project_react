@@ -20,7 +20,7 @@ function Main({
     clothingItems
       .filter((item) => item.weather === weather)
       .map((item) => (
-        <li key={item.id} className="main__list-item">
+        <li key={item._id} className="main__list-item">
           <ItemCard
             itemData={item}
             handleCardClick={handleCardClick}

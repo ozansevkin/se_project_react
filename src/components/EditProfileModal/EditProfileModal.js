@@ -1,6 +1,8 @@
 import "./EditProfileModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { useContext } from "react";
 
 function EditProfileModal({
   onEditProfile,
@@ -8,9 +10,11 @@ function EditProfileModal({
   handleOverlayClose,
   isLoading,
 }) {
+  const currentUser = useContext(CurrentUserContext);
+
   const { values, handleChange, errors, isValid } = useFormAndValidation({
-    name: "",
-    avatar: "",
+    name: currentUser.name,
+    avatar: currentUser.avatar,
   });
 
   function handleSubmit(e) {
