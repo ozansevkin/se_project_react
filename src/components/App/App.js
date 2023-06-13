@@ -146,9 +146,12 @@ function App() {
         if (!token) {
           return Promise.reject("JWT is not found.");
         }
-        localStorage.setItem("jwt", token);
-        setIsLoggedIn(true);
-        closeModals();
+        return auth.checkToken(token).then(({ user }) => {
+          localStorage.setItem("jwt", token);
+          setCurrentUser(user);
+          setIsLoggedIn(true);
+          closeModals();
+        });
       })
       .catch((err) => console.error(`Auth Error: ${err}`))
       .finally(() => setIsLoading(false));
@@ -181,9 +184,7 @@ function App() {
       .getItems()
       .then(setClothingItems)
       .catch((err) => console.error(`API Error: ${err}`));
-  }, []);
 
-  useEffect(() => {
     auth
       .checkToken(localStorage.getItem("jwt"))
       .then(({ user }) => {
@@ -192,6 +193,8 @@ function App() {
       })
       .catch((err) => console.error(`Auth Error: ${err}`));
   }, []);
+
+  // useEffect(() => {}, []);
 
   useEffect(() => {
     if (!activeModal) return;
