@@ -62,12 +62,6 @@ function App() {
     setSelectedItem({});
   }
 
-  function handleOverlayClose(e) {
-    if (e.target === e.currentTarget) {
-      closeModals();
-    }
-  }
-
   function handleCardLike(id, isLiked) {
     const token = localStorage.getItem("jwt");
 
@@ -191,21 +185,56 @@ function App() {
       .catch(console.error);
   }, []);
 
-  useEffect(() => {
-    if (!activeModal) return;
-
-    function handleEscClose(e) {
-      if (e.key === "Escape") {
-        closeModals();
-      }
-    }
-
-    document.addEventListener("keydown", handleEscClose);
-
-    return () => {
-      document.removeEventListener("keydown", handleEscClose);
-    };
-  }, [activeModal]);
+  const modalComponents = {
+    "show-cloth": (
+      <ItemModal
+        itemData={selectedItem}
+        onClose={closeModals}
+        openConfirmationModal={openConfirmationModal}
+        activeModal={activeModal}
+      />
+    ),
+    "delete-cloth": (
+      <DeleteConfirmationModal
+        handleItemDelete={handleItemDelete}
+        onClose={closeModals}
+        isLoading={isLoading}
+        activeModal={activeModal}
+      />
+    ),
+    "add-cloth": (
+      <AddItemModal
+        onAddItem={handleAddItemSubmit}
+        onClose={closeModals}
+        isLoading={isLoading}
+        activeModal={activeModal}
+      />
+    ),
+    register: (
+      <RegisterModal
+        onRegisterUser={handleRegisterUserSubmit}
+        onClose={closeModals}
+        isLoading={isLoading}
+        activeModal={activeModal}
+      />
+    ),
+    login: (
+      <LoginModal
+        onLoginUser={handleLoginUserSubmit}
+        onClose={closeModals}
+        isLoading={isLoading}
+        activeModal={activeModal}
+      />
+    ),
+    "edit-profile": (
+      <EditProfileModal
+        onEditProfile={handleEditProfileSubmit}
+        onClose={closeModals}
+        isLoading={isLoading}
+        activeModal={activeModal}
+      />
+    ),
+  };
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -243,54 +272,7 @@ function App() {
             </Route>
           </Switch>
           <Footer />
-          {activeModal === "add-cloth" && (
-            <AddItemModal
-              handleButtonClose={closeModals}
-              handleOverlayClose={handleOverlayClose}
-              onAddItem={handleAddItemSubmit}
-              isLoading={isLoading}
-            />
-          )}
-          {activeModal === "show-cloth" && (
-            <ItemModal
-              itemData={selectedItem}
-              handleButtonClose={closeModals}
-              handleOverlayClose={handleOverlayClose}
-              openConfirmationModal={openConfirmationModal}
-            />
-          )}
-          {activeModal === "delete-cloth" && (
-            <DeleteConfirmationModal
-              handleButtonClose={closeModals}
-              handleOverlayClose={handleOverlayClose}
-              handleItemDelete={handleItemDelete}
-              isLoading={isLoading}
-            />
-          )}
-          {activeModal === "register" && (
-            <RegisterModal
-              handleButtonClose={closeModals}
-              handleOverlayClose={handleOverlayClose}
-              onRegisterUser={handleRegisterUserSubmit}
-              isLoading={isLoading}
-            />
-          )}
-          {activeModal === "login" && (
-            <LoginModal
-              handleButtonClose={closeModals}
-              handleOverlayClose={handleOverlayClose}
-              onLoginUser={handleLoginUserSubmit}
-              isLoading={isLoading}
-            />
-          )}
-          {activeModal === "edit-profile" && (
-            <EditProfileModal
-              handleButtonClose={closeModals}
-              handleOverlayClose={handleOverlayClose}
-              onEditProfile={handleEditProfileSubmit}
-              isLoading={isLoading}
-            />
-          )}
+          {modalComponents[activeModal]}
         </div>
       </CurrentTemperatureUnitContext.Provider>
     </CurrentUserContext.Provider>

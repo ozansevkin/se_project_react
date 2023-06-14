@@ -4,12 +4,7 @@ import useFormAndValidation from "../../hooks/useFormAndValidation";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useContext } from "react";
 
-function EditProfileModal({
-  onEditProfile,
-  handleButtonClose,
-  handleOverlayClose,
-  isLoading,
-}) {
+function EditProfileModal({ onEditProfile, onClose, isLoading, activeModal }) {
   const currentUser = useContext(CurrentUserContext);
 
   const { values, handleChange, errors, isValid } = useFormAndValidation({
@@ -29,10 +24,9 @@ function EditProfileModal({
   return (
     <ModalWithForm
       title="Change profile data"
-      named="edit-profile"
+      named={activeModal}
       buttonText={isLoading ? "Saving..." : "Save changes"}
-      handleButtonClose={handleButtonClose}
-      handleOverlayClose={handleOverlayClose}
+      onClose={onClose}
       handleSubmit={handleSubmit}
       formValidity={isValid}
     >

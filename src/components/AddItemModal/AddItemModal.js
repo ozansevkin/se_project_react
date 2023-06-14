@@ -2,12 +2,7 @@ import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 
-function AddItemModal({
-  onAddItem,
-  handleButtonClose,
-  handleOverlayClose,
-  isLoading,
-}) {
+function AddItemModal({ onAddItem, onClose, isLoading, activeModal }) {
   const { values, handleChange, errors, isValid } = useFormAndValidation({
     name: "",
     weather: "",
@@ -27,10 +22,9 @@ function AddItemModal({
   return (
     <ModalWithForm
       title="New garment"
-      named="add-cloth"
+      named={activeModal}
       buttonText={isLoading ? "Saving..." : "Add garment"}
-      handleButtonClose={handleButtonClose}
-      handleOverlayClose={handleOverlayClose}
+      onClose={onClose}
       handleSubmit={handleSubmit}
       formValidity={isValid}
     >
