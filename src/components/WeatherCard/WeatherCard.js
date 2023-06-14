@@ -2,14 +2,15 @@ import "./WeatherCard.css";
 import * as weatherConditions from "../../images/weatherConditions/index";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import { useContext } from "react";
+import { BACKGROUND_COLOR } from "../../utils/constants";
 
 function getCardBackgroundColor(time, condition) {
   if (time === "night") {
-    return "#286897";
+    return BACKGROUND_COLOR.night;
   } else if (["sunny", "cloudy"].includes(condition)) {
-    return "#00A3FF";
+    return BACKGROUND_COLOR.dayClear;
   } else {
-    return "#6CA6C7";
+    return BACKGROUND_COLOR.dayOvercast;
   }
 }
 

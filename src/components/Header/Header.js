@@ -5,7 +5,7 @@ import logo from "../../images/logo.svg";
 import { useEffect, useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { Link } from "react-router-dom";
-import { headerMobileBreakpointWidth as mobileBreakPointWidth } from "../../utils/constants";
+import { MOBILE_BREAKPOINT_WIDTH } from "../../utils/constants";
 
 const currentDate = new Date().toLocaleDateString("default", {
   month: "long",
@@ -23,7 +23,7 @@ function Header({
 
   useEffect(() => {
     const handleResizeWindow = () => {
-      if (window.innerWidth >= mobileBreakPointWidth && isMobileMenuOpened) {
+      if (window.innerWidth >= MOBILE_BREAKPOINT_WIDTH && isMobileMenuOpened) {
         toggleMobileMenu();
       }
     };
