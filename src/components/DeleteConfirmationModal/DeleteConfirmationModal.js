@@ -15,13 +15,13 @@ function DeleteConfirmationModal({
         </h2>
         <p className="confirmation__warning">This action is irreversible.</p>
         <button
-          className="confirmation__text-button confirmation__text-button--type_confirm"
+          className="page__text-button confirmation__text-button--type_confirm"
           onClick={handleItemDelete}
         >
           {isLoading ? "Deleting..." : "Yes, delete item"}
         </button>
         <button
-          className="confirmation__text-button confirmation__text-button--type_cancel"
+          className="page__text-button confirmation__text-button--type_cancel"
           onClick={handleButtonClose}
         >
           Cancel
