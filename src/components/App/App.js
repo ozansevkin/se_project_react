@@ -81,7 +81,7 @@ function App() {
               )
             );
           })
-          .catch((err) => console.error(`API Error: ${err}`))
+          .catch(console.error)
       : api
           .removeItemLike(id, token)
           .then(({ item: updatedItem }) => {
@@ -91,19 +91,23 @@ function App() {
               )
             );
           })
-          .catch((err) => console.error(`API Error: ${err}`));
+          .catch(console.error);
+  }
+
+  function handleSubmit(request) {
+    setIsLoading(true);
+    request()
+      .then(closeModals)
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   }
 
   function handleAddItemSubmit(item) {
-    setIsLoading(true);
-    api
-      .addItem(item, localStorage.getItem("jwt"))
-      .then(({ item }) => {
+    handleSubmit(() => {
+      return api.addItem(item, localStorage.getItem("jwt")).then(({ item }) => {
         setClothingItems([item, ...clothingItems]);
-        closeModals();
-      })
-      .catch((err) => console.error(`API Error: ${err}`))
-      .finally(() => setIsLoading(false));
+      });
+    });
   }
 
   function openConfirmationModal(card) {
@@ -112,61 +116,47 @@ function App() {
   }
 
   function handleItemDelete() {
-    setIsLoading(true);
-    api
-      .deleteItem(selectedItem._id, localStorage.getItem("jwt"))
-      .then(() => {
-        setClothingItems(
-          [...clothingItems].filter((item) => item._id !== selectedItem._id)
-        );
-        closeModals();
-      })
-      .catch((err) => console.error(`API Error: ${err}`))
-      .finally(() => setIsLoading(false));
+    handleSubmit(() => {
+      return api
+        .deleteItem(selectedItem._id, localStorage.getItem("jwt"))
+        .then(() => {
+          setClothingItems(
+            [...clothingItems].filter((item) => item._id !== selectedItem._id)
+          );
+        });
+    });
   }
 
   function handleRegisterUserSubmit(user) {
-    setIsLoading(true);
-    auth
-      .register(user)
-      .then(({ user }) => {
-        setCurrentUser(user);
-        setIsLoggedIn(true);
-        closeModals();
-      })
-      .catch((err) => console.error(`Auth Error: ${err}`))
-      .finally(() => setIsLoading(false));
+    handleSubmit(() => {
+      return auth.register(user).then(({ user }) => {
+        handleLogin(user);
+      });
+    });
   }
 
   function handleLoginUserSubmit(user) {
-    setIsLoading(true);
-    auth
-      .login(user)
-      .then(({ token }) => {
+    handleSubmit(() => {
+      return auth.login(user).then(({ token }) => {
         if (!token) {
           return Promise.reject("JWT is not found.");
         }
         return auth.checkToken(token).then(({ user }) => {
           localStorage.setItem("jwt", token);
-          setCurrentUser(user);
-          setIsLoggedIn(true);
-          closeModals();
+          handleLogin(user);
         });
-      })
-      .catch((err) => console.error(`Auth Error: ${err}`))
-      .finally(() => setIsLoading(false));
+      });
+    });
   }
 
   function handleEditProfileSubmit(user) {
-    setIsLoading(true);
-    auth
-      .updateProfile(user, localStorage.getItem("jwt"))
-      .then(({ user }) => {
-        setCurrentUser(user);
-        closeModals();
-      })
-      .catch((err) => console.error(`Auth Error: ${err}`))
-      .finally(() => setIsLoading(false));
+    handleSubmit(() => {
+      return auth
+        .updateProfile(user, localStorage.getItem("jwt"))
+        .then(({ user }) => {
+          setCurrentUser(user);
+        });
+    });
   }
 
   function handleLogout() {
@@ -175,15 +165,18 @@ function App() {
     localStorage.removeItem("jwt");
   }
 
+  function handleLogin(user) {
+    setCurrentUser(user);
+    setIsLoggedIn(true);
+  }
+
   useEffect(() => {
-    weatherApi()
-      .then(setWeatherData)
-      .catch((err) => console.error(`Weather API Error: ${err}`));
+    weatherApi().then(setWeatherData).catch(console.error);
 
     api
       .getItems()
       .then(({ items }) => setClothingItems(items))
-      .catch((err) => console.error(`API Error: ${err}`));
+      .catch(console.error);
   }, []);
 
   useEffect(() => {
@@ -193,10 +186,9 @@ function App() {
     auth
       .checkToken(token)
       .then(({ user }) => {
-        setCurrentUser(user);
-        setIsLoggedIn(true);
+        handleLogin(user);
       })
-      .catch((err) => console.error(`Auth Error: ${err}`));
+      .catch(console.error);
   }, []);
 
   useEffect(() => {
