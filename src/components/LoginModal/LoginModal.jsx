@@ -2,12 +2,7 @@ import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 
-function LoginModal({
-  onLoginUser,
-  handleButtonClose,
-  handleOverlayClose,
-  isLoading,
-}) {
+function LoginModal({ onLoginUser, onClose, isLoading }) {
   const { values, handleChange, errors, isValid } = useFormAndValidation({
     email: "",
     password: "",
@@ -27,8 +22,7 @@ function LoginModal({
       title="Log in"
       named="login"
       buttonText={isLoading ? "Logging in..." : "Log in"}
-      handleButtonClose={handleButtonClose}
-      handleOverlayClose={handleOverlayClose}
+      onClose={onClose}
       handleSubmit={handleSubmit}
       formValidity={isValid}
     >

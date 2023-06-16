@@ -2,12 +2,7 @@ import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 
-function RegisterModal({
-  onRegisterUser,
-  handleButtonClose,
-  handleOverlayClose,
-  isLoading,
-}) {
+function RegisterModal({ onRegisterUser, onClose, isLoading }) {
   const { values, handleChange, errors, isValid } = useFormAndValidation({
     email: "",
     password: "",
@@ -31,8 +26,7 @@ function RegisterModal({
       title="Sign up"
       named="register"
       buttonText={isLoading ? "Signing up..." : "Next"}
-      handleButtonClose={handleButtonClose}
-      handleOverlayClose={handleOverlayClose}
+      onClose={onClose}
       handleSubmit={handleSubmit}
       formValidity={isValid}
     >
