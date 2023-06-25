@@ -1,6 +1,10 @@
 const baseUrl =
-  // "https://my-json-server.typicode.com/ozansevkin/se_project_react";
-  "http://localhost:3001";
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwr.australia.ai"
+    : "http://localhost:3001";
+
+// Fake Online REST API
+// "https://my-json-server.typicode.com/ozansevkin/se_project_react"
 
 const headers = new Headers({
   "Content-Type": "application/json",
