@@ -16,10 +16,9 @@
   "scripts": {
     "start": "vite --open --port 3000",
     "build": "vite build",
-    "prepreview": "npm run build",
-    "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "preview": "npm run build && vite preview",
+    "deploy": "npm run build && scp -r ./build/* sevkinozan@wtwr.australia.ai:/home/sevkinozan/frontend",
+    "deploy-gh": "npm run build && gh-pages -d build"
   },
   "browserslist": {
     "production": [
