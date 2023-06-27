@@ -1,6 +1,6 @@
 # WTWR (What to Wear?)
 
-[![WTWR (What to Wear?)][product-screenshot]](https://ozansevkin.github.io/se_project_react/)
+[![WTWR (What to Wear?)][product-screenshot]](https://wtwr.australia.ai)
 
 ## About the project
 
@@ -12,7 +12,7 @@ The idea of the application is pretty simple - It makes a call to an API, which 
 
 - [Backend Repo](https://github.com/ozansevkin/se_project_express)
 
-- [Production](https://ozansevkin.github.io/se_project_react/)
+- [Production](https://wtwr.australia.ai)
 
 ## Built with
 
