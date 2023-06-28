@@ -5,7 +5,6 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 
 function ClothesSection({
   clothingItems,
-  weather,
   handleCardClick,
   setActiveModal,
   onCardLike,
@@ -15,9 +14,7 @@ function ClothesSection({
   const listItems =
     clothingItems.length > 0 &&
     clothingItems
-      .filter(
-        (item) => item.weather === weather && item.owner._id === currentUser._id
-      )
+      .filter((item) => item.owner._id === currentUser._id)
       .map((item) => (
         <li key={item._id} className="main__list-item">
           <ItemCard

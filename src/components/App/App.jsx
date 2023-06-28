@@ -253,7 +253,6 @@ function App() {
             <ProtectedRoute exact path="/profile" isLoggedIn={isLoggedIn}>
               <Profile
                 clothingItems={clothingItems}
-                weather={weatherData.weather}
                 handleCardClick={handleCardClick}
                 setActiveModal={setActiveModal}
                 onLogout={handleLogout}

@@ -4,7 +4,6 @@ import ClothesSection from "../ClothesSection/ClothesSection";
 
 function Profile({
   clothingItems,
-  weather,
   handleCardClick,
   setActiveModal,
   onLogout,
@@ -15,7 +14,6 @@ function Profile({
       <SideBar setActiveModal={setActiveModal} onLogout={onLogout} />
       <ClothesSection
         clothingItems={clothingItems}
-        weather={weather}
         handleCardClick={handleCardClick}
         setActiveModal={setActiveModal}
         onCardLike={onCardLike}
