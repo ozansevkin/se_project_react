@@ -18,7 +18,7 @@
     "build": "vite build",
     "preview": "npm run build && vite preview",
     "deploy": "npm run build && scp -r ./build/* sevkinozan@wtwr.australia.ai:/home/sevkinozan/frontend",
-    "deploy-gh": "npm run build && gh-pages -d build"
+    "deploy-gh": "gh-pages -d redirect"
   },
   "browserslist": {
     "production": [

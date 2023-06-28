@@ -12,6 +12,9 @@
 /dist
 /build
 
+# redirect
+/redirect
+
 # misc
 .DS_Store
 .env.local
