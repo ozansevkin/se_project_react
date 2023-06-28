@@ -2,6 +2,7 @@ import "./ItemModal.css";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import Modal from "../Modal/Modal";
+import ItemImage from "../ItemImage/ItemImage";
 
 function ItemModal({ itemData, onClose, openConfirmationModal, activeModal }) {
   const { name, imageUrl, weather, owner } = itemData;
@@ -16,7 +17,7 @@ function ItemModal({ itemData, onClose, openConfirmationModal, activeModal }) {
   return (
     <Modal name={activeModal} onClose={onClose}>
       <article className="item">
-        <img className="item__image" src={imageUrl} alt={name} />
+        <ItemImage className="item__image" src={imageUrl} alt={name} />
         <div className="item__info">
           <p className="item__title">{name}</p>
           <p className="item__detail">Weather: {weather}</p>

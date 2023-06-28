@@ -3,6 +3,7 @@ import cardLikeIcon from "../../images/cardLikeIcon.svg";
 import cardLikeIconActive from "../../images/cardLikeIconActive.svg";
 import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import ItemImage from "../ItemImage/ItemImage";
 
 function ItemCard({ itemData, handleCardClick, onCardLike, isLoggedIn }) {
   const { _id, name, imageUrl, likes } = itemData;
@@ -22,7 +23,7 @@ function ItemCard({ itemData, handleCardClick, onCardLike, isLoggedIn }) {
 
   return (
     <article onClick={() => handleCardClick(itemData)} className="item-card">
-      <img className="item-card__image" src={imageUrl} alt={name} />
+      <ItemImage src={imageUrl} alt={name} />
       <div className="item-card__info">
         <p className="item-card__title">{name}</p>
         <button
