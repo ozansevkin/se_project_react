@@ -37,7 +37,7 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState({
     _id: "",
-    name: "Ozan",
+    name: "",
     avatar: "",
     email: "",
   });
