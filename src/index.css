@@ -1,5 +1,6 @@
 :root {
   --page-side-padding: calc(10px + 1.5625vw);
+  --error-color: #ff4d00;
   height: 100%;
 }
 
