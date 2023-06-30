@@ -9,6 +9,7 @@
   border-radius: 19px;
   box-sizing: border-box;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .item-card__info {
@@ -38,6 +39,7 @@
   border: none;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .item-card__like--visible {
