@@ -40,10 +40,13 @@ function EditProfileModal({ onEditProfile, onClose, isLoading, activeModal }) {
         <input
           type="text"
           name="name"
+          minLength={2}
+          maxLength={30}
           placeholder="Name"
           className={`form__text-input ${
             errors.name && "form__text-input--error"
           }`}
+          required
           value={values.name}
           onChange={handleChange}
         />

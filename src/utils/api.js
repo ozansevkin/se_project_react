@@ -10,18 +10,31 @@ const headers = new Headers({
   "Content-Type": "application/json",
 });
 
-function processServerResponse(res) {
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(
-    `Network response was not ok. Status: ${res.status} - ${res.statusText}`
-  );
-}
-
 async function request(url, options) {
   const res = await fetch(url, options);
   return processServerResponse(res);
+}
+
+async function processServerResponse(res) {
+  const data = await res.json();
+
+  if (res.ok) return data;
+
+  return handleUnsuccesfulServerResponse(data, res);
+}
+
+function handleUnsuccesfulServerResponse(data, res) {
+  const { status, statusText } = res;
+  let { message, validation } = data;
+
+  if (validation) {
+    message = validation.body.message;
+  }
+
+  return Promise.reject({
+    status: `Network response was not ok. Status: ${status} - ${statusText}`,
+    message,
+  });
 }
 
 function getItems() {

@@ -14,7 +14,7 @@
   margin: 0;
 }
 
-.form__server-error {
+.form__api-error {
   margin: 0;
   color: var(--error-color);
 }

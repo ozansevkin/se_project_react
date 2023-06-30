@@ -38,6 +38,8 @@ function AddItemModal({ onAddItem, onClose, isLoading, activeModal }) {
         <input
           type="text"
           name="name"
+          minLength={2}
+          maxLength={30}
           placeholder="Name"
           className={`form__text-input ${
             errors.name && "form__text-input--error"

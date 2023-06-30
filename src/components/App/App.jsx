@@ -17,6 +17,7 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import ApiErrorContext from "../../contexts/ApiErrorContext";
 
 function App() {
   const [weatherData, setWeatherData] = useState({ temp: {} });
@@ -42,6 +43,8 @@ function App() {
     email: "",
   });
 
+  const [apiError, setApiError] = useState("");
+
   function handleToggleSwitchChange() {
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
@@ -60,6 +63,7 @@ function App() {
   function closeModals() {
     setActiveModal("");
     setSelectedItem({});
+    setApiError("");
   }
 
   function handleCardLike(id, isLiked) {
@@ -92,7 +96,10 @@ function App() {
     setIsLoading(true);
     request()
       .then(closeModals)
-      .catch(console.error)
+      .catch((err) => {
+        if (err.message) setApiError(err.message);
+        console.error(err);
+      })
       .finally(() => setIsLoading(false));
   }
 
@@ -241,38 +248,40 @@ function App() {
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
-        <div className="page">
-          <Header
-            city={weatherData.city}
-            setActiveModal={setActiveModal}
-            isMobileMenuOpened={isMobileMenuOpened}
-            toggleMobileMenu={toggleMobileMenu}
-            isLoggedIn={isLoggedIn}
-          />
-          <Switch>
-            <ProtectedRoute exact path="/profile" isLoggedIn={isLoggedIn}>
-              <Profile
-                clothingItems={clothingItems}
-                handleCardClick={handleCardClick}
-                setActiveModal={setActiveModal}
-                onLogout={handleLogout}
-                onCardLike={handleCardLike}
-              />
-            </ProtectedRoute>
-            <Route path="/">
-              <Main
-                clothingItems={clothingItems}
-                weatherData={weatherData}
-                handleCardClick={handleCardClick}
-                onCardLike={handleCardLike}
-                isMobileMenuOpened={isMobileMenuOpened}
-                isLoggedIn={isLoggedIn}
-              />
-            </Route>
-          </Switch>
-          <Footer />
-          {modalComponents[activeModal]}
-        </div>
+        <ApiErrorContext.Provider value={apiError}>
+          <div className="page">
+            <Header
+              city={weatherData.city}
+              setActiveModal={setActiveModal}
+              isMobileMenuOpened={isMobileMenuOpened}
+              toggleMobileMenu={toggleMobileMenu}
+              isLoggedIn={isLoggedIn}
+            />
+            <Switch>
+              <ProtectedRoute exact path="/profile" isLoggedIn={isLoggedIn}>
+                <Profile
+                  clothingItems={clothingItems}
+                  handleCardClick={handleCardClick}
+                  setActiveModal={setActiveModal}
+                  onLogout={handleLogout}
+                  onCardLike={handleCardLike}
+                />
+              </ProtectedRoute>
+              <Route path="/">
+                <Main
+                  clothingItems={clothingItems}
+                  weatherData={weatherData}
+                  handleCardClick={handleCardClick}
+                  onCardLike={handleCardLike}
+                  isMobileMenuOpened={isMobileMenuOpened}
+                  isLoggedIn={isLoggedIn}
+                />
+              </Route>
+            </Switch>
+            <Footer />
+            {modalComponents[activeModal]}
+          </div>
+        </ApiErrorContext.Provider>
       </CurrentTemperatureUnitContext.Provider>
     </CurrentUserContext.Provider>
   );
