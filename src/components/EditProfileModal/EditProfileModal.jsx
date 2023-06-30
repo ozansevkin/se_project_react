@@ -1,4 +1,3 @@
-import "./EditProfileModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useFormAndValidation from "../../hooks/useFormAndValidation";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
