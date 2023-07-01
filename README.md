@@ -43,7 +43,11 @@ The idea of the application is pretty simple - It makes a call to an API, which 
     - Lists
     - Handling Events
   - Functional Components
-  - useState, useEffect Hooks
+  - Hooks
+    - useState
+    - useEffect
+    - useContext
+    - Custom Form Validation Hook
 - [Figma](https://www.figma.com)
   - Responsive Design
   - UI Kit
@@ -58,7 +62,7 @@ The idea of the application is pretty simple - It makes a call to an API, which 
 - [x] Add React Router
 - [x] Add login authorization
 - [x] Add temperature unit selection (celcius, fahrenheit, etc.)
-- [] Add geolocation API
+- [x] Add geolocation API
 
 ## Contact
 
