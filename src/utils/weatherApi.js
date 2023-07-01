@@ -62,9 +62,9 @@ function processData(data) {
   return processedData;
 }
 
-async function weatherApi() {
+async function weatherApi(coords) {
   return await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${options.lat}&lon=${options.lon}&units=${options.units}&appid=${options.key}`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&units=${options.units}&appid=${options.key}`
   )
     .then(processServerResponse)
     .then(processData);

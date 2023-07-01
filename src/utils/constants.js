@@ -1,10 +1,13 @@
 // Configuration Options
 
 const weatherApiOptions = {
-  lat: "-37.81353897594871",
-  lon: "144.96319207781238",
   units: "imperial",
   key: "87ecaf5163a88f4161ef1ecb6b13bb75",
+};
+
+const weatherApiDefaultCoords = {
+  latitude: "-37.81353897594871",
+  longitude: "144.96319207781238",
 };
 
 // Magic Numbers
@@ -17,4 +20,9 @@ const BACKGROUND_COLOR = {
   dayOvercast: "#6CA6C7",
 };
 
-export { weatherApiOptions, MOBILE_BREAKPOINT_WIDTH, BACKGROUND_COLOR };
+export {
+  weatherApiOptions,
+  weatherApiDefaultCoords,
+  MOBILE_BREAKPOINT_WIDTH,
+  BACKGROUND_COLOR,
+};

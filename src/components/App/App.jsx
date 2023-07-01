@@ -12,12 +12,14 @@ import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import * as api from "../../utils/api";
 import * as auth from "../../utils/auth";
 import weatherApi from "../../utils/weatherApi";
+import geolocationApi from "../../utils/geolocationApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import ApiErrorContext from "../../contexts/ApiErrorContext";
+import { weatherApiDefaultCoords } from "../../utils/constants";
 
 function App() {
   const [weatherData, setWeatherData] = useState({ temp: {} });
@@ -172,8 +174,28 @@ function App() {
   }
 
   useEffect(() => {
-    weatherApi().then(setWeatherData).catch(console.error);
+    function callWeatherApiWithCurrentCoords(position) {
+      return weatherApi(position.coords)
+        .then(setWeatherData)
+        .catch(console.error);
+    }
 
+    function callWeatherApiWithDefaultCoords(err) {
+      console.error(err);
+      return weatherApi(weatherApiDefaultCoords)
+        .then(setWeatherData)
+        .catch(console.error);
+    }
+
+    geolocationApi(
+      // if success
+      callWeatherApiWithCurrentCoords,
+      // if error
+      callWeatherApiWithDefaultCoords
+    );
+  }, []);
+
+  useEffect(() => {
     api
       .getItems()
       .then(({ items }) => setClothingItems(items))
