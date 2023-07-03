@@ -38,12 +38,7 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const [currentUser, setCurrentUser] = useState({
-    _id: "",
-    name: "",
-    avatar: "",
-    email: "",
-  });
+  const [currentUser, setCurrentUser] = useState({});
 
   const [apiError, setApiError] = useState("");
 
@@ -280,14 +275,17 @@ function App() {
               isLoggedIn={isLoggedIn}
             />
             <Switch>
-              <ProtectedRoute exact path="/profile" isLoggedIn={isLoggedIn}>
-                <Profile
-                  clothingItems={clothingItems}
-                  handleCardClick={handleCardClick}
-                  setActiveModal={setActiveModal}
-                  onLogout={handleLogout}
-                  onCardLike={handleCardLike}
-                />
+              <ProtectedRoute exact path="/profile">
+                {currentUser && (
+                  // do not render before fetching user info
+                  <Profile
+                    clothingItems={clothingItems}
+                    handleCardClick={handleCardClick}
+                    setActiveModal={setActiveModal}
+                    onLogout={handleLogout}
+                    onCardLike={handleCardLike}
+                  />
+                )}
               </ProtectedRoute>
               <Route path="/">
                 <Main
