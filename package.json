@@ -2,7 +2,7 @@
   "name": "se_project_react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://wtwr.australia.ai/",
+  "homepage": "https://wtwr.ozansevkin.dev/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -17,7 +17,7 @@
     "start": "vite --open --port 3000",
     "build": "vite build",
     "preview": "npm run build && vite preview",
-    "deploy": "npm run build && scp -r ./build/* sevkinozan@wtwr.australia.ai:/home/sevkinozan/frontend",
+    "deploy": "npm run build && scp -r ./build/* sevkinozan@wtwr.ozansevkin.dev:/home/sevkinozan/frontend",
     "deploy-gh": "gh-pages -d redirect"
   },
   "browserslist": {

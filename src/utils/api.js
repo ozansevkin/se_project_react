@@ -1,6 +1,6 @@
 const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "https://api.wtwr.australia.ai"
+    ? "https://api.wtwr.ozansevkin.dev"
     : "http://localhost:3001";
 
 // Fake Online REST API
