@@ -102,7 +102,7 @@
 
 .menu-button__bar {
   width: 28px;
-  height: 2px;
+  border: solid 1px;
   background: #000;
   border-radius: 1px;
   transition: all 0.3s ease-in-out;
